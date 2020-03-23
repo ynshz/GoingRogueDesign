@@ -1,0 +1,128 @@
+<resources>
+    <string name="app_name">GoingRogueDesign</string>
+    <string name="title_home">Home</string>
+    <string name="title_calculator">Calculator</string>
+    <string name="title_projects">Projects</string>
+    <string name="title_account">Account</string>
+
+    <string name="home_intro">
+        Whether you\'re working on a Residential or Commercial project, GoingRogue Design can provide you with excellent Interior and Exterior Design, Purchasing, Budgeting and Project Management from idea conception through to final construction.
+    </string>
+
+    <string-array name="service_titles">
+        <item>Interior Design</item>
+        <item>Exterior Design</item>
+        <item>Conceptual Design</item>
+        <item>Purchasing</item>
+        <item>Project Management</item>
+        <item>Owner Representative</item>
+    </string-array>
+
+    <string-array name="interior_design_services">
+        <item>Professional Drawings</item>
+        <item>Color Selection</item>
+        <item>Finish Selection</item>
+        <item>Fixture Selection</item>
+        <item>Furniture Selection</item>
+    </string-array>
+
+    <string-array name="exterior_design_services">
+        <item>Professional Drawings</item>
+        <item>Color Selection</item>
+        <item>Material Selection</item>
+    </string-array>
+
+    <string-array name="conceptual_design_services">
+        <item>Hand Drawings</item>
+        <item>Renderings</item>
+        <item>Color Boards</item>
+        <item>Dream Boards</item>
+        <item>Building Models</item>
+    </string-array>
+
+    <string-array name="purchasing_services">
+        <item>Purchasing of Furniture and Finishes</item>
+        <item>Coordinating Install</item>
+        <item>Vendor Coordination</item>
+    </string-array>
+
+    <string-array name="project_management_services">
+        <item>Assisting in General Contractor and Sub-Contractor Selection</item>
+        <item>Budgeting</item>
+    </string-array>
+
+    <string-array name="owner_representative_services">
+        <item>Coordinating Meetings, Emails, Communication, Payments and anything else you may need!</item>
+        <item>Working with Many Hotel Brands</item>
+    </string-array>
+
+    <string-array name="state_arrays">
+        <item>Alabama</item>
+        <item>Alaska</item>
+        <item>Arizona</item>
+        <item>Arkansas</item>
+        <item>California</item>
+        <item>Colorado</item>
+        <item>Connecticut</item>
+        <item>Delaware</item>
+        <item>District of Columbia</item>
+        <item>Florida</item>
+        <item>Georgia</item>
+        <item>Hawaii</item>
+        <item>Idaho</item>
+        <item>Illinois</item>
+        <item>Indiana</item>
+        <item>Iowa</item>
+        <item>Kansas</item>
+        <item>Kentucky</item>
+        <item>Louisiana</item>
+        <item>Maine</item>
+        <item>Maryland</item>
+        <item>Massachusetts</item>
+        <item>Michigan</item>
+        <item>Minnesota</item>
+        <item>Mississippi</item>
+        <item>Missouri</item>
+        <item>Montana</item>
+        <item>Nebraska</item>
+        <item>Nevada</item>
+        <item>New Hampshire</item>
+        <item>New Jersey</item>
+        <item>New Mexico</item>
+        <item>New York</item>
+        <item>North Carolina</item>
+        <item>North Dakota</item>
+        <item>Ohio</item>
+        <item>Oklahoma</item>
+        <item>Oregon</item>
+        <item>Pennsylvania</item>
+        <item>Rhode Island</item>
+        <item>South Carolina</item>
+        <item>South Dakota</item>
+        <item>Tennessee</item>
+        <item>Texas</item>
+        <item>Utah</item>
+        <item>Vermont</item>
+        <item>Virginia</item>
+        <item>Washington</item>
+        <item>West Virginia</item>
+        <item>Wisconsin</item>
+        <item>Wyoming</item>
+        <item>Puerto Rico</item>
+        <item>Virgin Islands</item>
+        <item>Northern Mariana Islands</item>
+        <item>Guam</item>
+        <item>American Samoa</item>
+        <item>Palau</item>
+    </string-array>
+
+    <string-array name="contractor_type_arrays">
+        <item>type 1</item>
+        <item>type 2</item>
+        <item>type 3</item>
+        <item>type 4</item>
+        <item>type 5</item>
+
+    </string-array>
+
+</resources>

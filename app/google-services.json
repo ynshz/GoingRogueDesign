@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "804059970146",
+    "firebase_url": "https://rogue-model.firebaseio.com",
+    "project_id": "rogue-model",
+    "storage_bucket": "rogue-model.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:804059970146:android:a6ae7f2b4f2ba125552f3b",
+        "android_client_info": {
+          "package_name": "com.example.goingroguedesign"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "804059970146-boh991ueea4k1p8q9vc9c7tipv8eok6c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.goingroguedesign",
+            "certificate_hash": "fb7ce6e5b9ecdf752c779d1b44196728c3965f31"
+          }
+        },
+        {
+          "client_id": "804059970146-us09ptdf5aaiu6gdveqn3ca4o46ecik2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYOzmt-LIpu-idxDkIKiwCfL0wCT6mGA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "804059970146-us09ptdf5aaiu6gdveqn3ca4o46ecik2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "804059970146-6d4skp3m64hli70dvidsdsbqquseuv3p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.RogueModel.RogueModel"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
