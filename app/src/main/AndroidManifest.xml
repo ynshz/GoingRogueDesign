@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.account.AddContractorActivity"></activity>
+        <activity android:name=".ui.projects.ProjectDetailActivity"></activity>
+        <activity android:name=".ui.account.AddContractorActivity" />
         <activity android:name=".ui.account.SignUpActivity" />
         <activity android:name=".ui.account.ContractorActivity" />
         <activity android:name=".ui.account.UpdatePasswordActivity" />
