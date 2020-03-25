@@ -439,7 +439,7 @@
         android:id="@+id/cvAccountTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/colorPrimaryDark"
+        app:cardBackgroundColor="@color/colorPrimary"
         app:cardElevation="2dp"
         app:cardMaxElevation="2dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -449,7 +449,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="24dp">
+            android:padding="16dp">
 
             <TextView
                 android:id="@+id/tvAccountTitle"
@@ -457,8 +457,7 @@
                 android:layout_height="wrap_content"
                 android:text="Account"
                 android:textColor="#000000"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

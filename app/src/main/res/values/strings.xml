@@ -125,7 +125,13 @@
 
     </string-array>
     <string name="title_activity_project_detail">ProjectDetailActivity</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_1">Document</string>
+    <string name="tab_text_2">Calendar</string>
+    <string name="tab_text_3">Invoice</string>
+    <string name="tab_text_4">Task</string>
+    <string name="tab_text_5">Note</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
