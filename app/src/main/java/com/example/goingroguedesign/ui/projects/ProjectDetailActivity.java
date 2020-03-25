@@ -3,13 +3,12 @@ package com.example.goingroguedesign.ui.projects;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.goingroguedesign.MainActivity;
 import com.example.goingroguedesign.R;
-import com.google.android.material.badge.BadgeDrawable;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import com.example.goingroguedesign.ui.account.UpdateEmailActivity;
 import com.google.android.material.tabs.TabLayout;
-import com.example.goingroguedesign.ui.projects.SectionsPagerAdapter;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -27,11 +26,8 @@ public class ProjectDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_project_detail);
         ((AppCompatActivity) ProjectDetailActivity.this).getSupportActionBar().hide();
 
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
-        ViewPager viewPager = findViewById(R.id.view_pager);
-        viewPager.setAdapter(sectionsPagerAdapter);
-        final TabLayout tabs = findViewById(R.id.tabs);
-        tabs.setupWithViewPager(viewPager);
+
+
         /*
         ivDocument = findViewById(R.id.ivDocument);
         ivCalendar = findViewById(R.id.ivCalendar);
@@ -40,13 +36,21 @@ public class ProjectDetailActivity extends AppCompatActivity {
         ivNote = findViewById(R.id.ivNote);
          */
         ivBack = findViewById(R.id.ivBack);
-        tvTitle = findViewById(R.id.tvTitle);
+        tvTitle = findViewById(R.id.tvName);
         tvAddress = findViewById(R.id.tvAddress);
         tvStatus = findViewById(R.id.tvStatus);
         tvDate = findViewById(R.id.tvDate);
         tvLead = findViewById(R.id.tvLead);
         getData();
         setData();
+        Toast.makeText(this, "Retrieving data: "+id, Toast.LENGTH_SHORT).show();
+
+        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager(), id);
+        ViewPager viewPager = findViewById(R.id.view_pager);
+        viewPager.setAdapter(sectionsPagerAdapter);
+        final TabLayout tabs = findViewById(R.id.tabs);
+        tabs.setupWithViewPager(viewPager);
+
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,12 +107,13 @@ public class ProjectDetailActivity extends AppCompatActivity {
         badge.setNumber(99);
 
          */
+        /*
         tabs.getTabAt(0).setIcon(R.drawable.ic_document);
         tabs.getTabAt(1).setIcon(R.drawable.ic_calendar);
         tabs.getTabAt(2).setIcon(R.drawable.ic_invoice);
         tabs.getTabAt(3).setIcon(R.drawable.ic_task);
         tabs.getTabAt(4).setIcon(R.drawable.ic_note);
-
+*/
 
     }
 

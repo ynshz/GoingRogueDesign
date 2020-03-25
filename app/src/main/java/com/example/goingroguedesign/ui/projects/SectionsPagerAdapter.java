@@ -1,5 +1,6 @@
 package com.example.goingroguedesign.ui.projects;
 import android.content.Context;
+import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
@@ -23,10 +24,12 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @StringRes
     private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_3, R.string.tab_text_4, R.string.tab_text_5};
     private final Context mContext;
+    String id;
 
-    public SectionsPagerAdapter(Context context, FragmentManager fm) {
+    public SectionsPagerAdapter(Context context, FragmentManager fm, String s) {
         super(fm);
         mContext = context;
+        id = s;
     }
 
     @Override
@@ -51,6 +54,9 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 fragment = new DocumentFragment();
                 break;
         }
+        Bundle bundle = new Bundle();
+        bundle.putString("projectID", id);
+        fragment.setArguments(bundle);
         return fragment;
     }
 
@@ -62,7 +68,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        // Show 2 total pages.
         return 5;
     }
 }

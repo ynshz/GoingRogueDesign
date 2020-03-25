@@ -13,17 +13,23 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.goingroguedesign.R;
-import com.example.goingroguedesign.ui.projects.invoice.InvoiceAdapter;
+import com.example.goingroguedesign.utils.GetRandString;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class InvoiceFragment extends Fragment {
     RecyclerView recyclerView;
@@ -31,25 +37,58 @@ public class InvoiceFragment extends Fragment {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseAuth mAuth;
     FirebaseUser mUser;
+    String id = "";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_invoice, container, false);
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
-        recyclerView = root.findViewById(R.id.recyclerViewInvoice);
-        loadInvoice();
+        recyclerView = root.findViewById(R.id.recyclerViewDocument);
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            id = bundle.getString("projectID");
+            loadInvoice(id);
+
+            FloatingActionButton fab = root.findViewById(R.id.fab);
+
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    GetRandString g = new GetRandString(getActivity());
+
+                    Map<String, Object> dummy = new HashMap<>();
+                    dummy.put("invoiceName", g.getLastName()+g.getLastName());
+                    dummy.put("invoiceDueDate", FieldValue.serverTimestamp());
+                    dummy.put("invoicePaid", false);
+                    dummy.put("invoicePaidAt", FieldValue.serverTimestamp());
+                    dummy.put("invoiceImageUrl", "");
+                    dummy.put("projectID", id);
+
+                    db.collection("Invoice").add(dummy)
+                            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                @Override
+                                public void onSuccess(DocumentReference documentReference) {
+                                    loadInvoice(id);
+
+                                }
+                            });
+                }
+            });
+
+        }
+
 
         return root;
     }
 
-    public void loadInvoice () {
+    public void loadInvoice (String s) {
         final ArrayList<String> name = new ArrayList<String>();
         final ArrayList<Date> date = new ArrayList<java.util.Date>();
         final ArrayList<String> url = new ArrayList<String>();
         final ArrayList<String> id = new ArrayList<String>();
         final ArrayList<Boolean> paid = new ArrayList<Boolean>();
-        db.collection("Invoice").whereEqualTo("customerID", mAuth.getUid())
+        db.collection("Invoice").whereEqualTo("projectID", s)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -59,7 +98,7 @@ public class InvoiceFragment extends Fragment {
                                 name.add(document.getString("invoiceName"));
                                 date.add(document.getDate("invoiceDueDate"));
                                 url.add(document.getString("invoiceImageUrl"));
-                                id.add(document.getString("invoiceID"));
+                                id.add(document.getId());
                                 paid.add(document.getBoolean("invoicePaid"));
 
                             }
@@ -72,4 +111,6 @@ public class InvoiceFragment extends Fragment {
                     }
                 });
     }
+
+
 }

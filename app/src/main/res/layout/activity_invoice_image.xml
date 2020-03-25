@@ -27,7 +27,7 @@
                 app:srcCompat="@drawable/ic_keyboard_arrow_left_black_72dp" />
 
             <TextView
-                android:id="@+id/tvTitle"
+                android:id="@+id/tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Title"

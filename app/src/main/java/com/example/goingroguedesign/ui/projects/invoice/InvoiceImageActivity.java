@@ -3,7 +3,6 @@ package com.example.goingroguedesign.ui.projects.invoice;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.goingroguedesign.R;
-import com.example.goingroguedesign.ui.projects.ProjectDetailActivity;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.InputStream;
 
@@ -29,7 +27,7 @@ public class InvoiceImageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_invoice_image);
         ((AppCompatActivity) InvoiceImageActivity.this).getSupportActionBar().hide();
 
-        TextView tvName = findViewById(R.id.tvTitle);
+        TextView tvName = findViewById(R.id.tvName);
         ImageView ivBack = findViewById(R.id.ivBack);
         ImageView ivInvoice = findViewById(R.id.ivInvoice);
 

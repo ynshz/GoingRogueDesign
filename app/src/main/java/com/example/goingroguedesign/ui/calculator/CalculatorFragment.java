@@ -16,20 +16,11 @@ import com.example.goingroguedesign.R;
 
 public class CalculatorFragment extends Fragment {
 
-    private CalculatorViewModel calculatorViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        calculatorViewModel =
-                ViewModelProviders.of(this).get(CalculatorViewModel.class);
         View root = inflater.inflate(R.layout.fragment_calculator, container, false);
-        final TextView textView = root.findViewById(R.id.text_calculator);
-        calculatorViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+
         return root;
     }
 }

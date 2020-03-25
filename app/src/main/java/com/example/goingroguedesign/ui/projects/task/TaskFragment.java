@@ -1,65 +1,146 @@
 package com.example.goingroguedesign.ui.projects.task;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.goingroguedesign.R;
+import com.example.goingroguedesign.ui.projects.invoice.InvoiceAdapter;
+import com.example.goingroguedesign.utils.GetRandString;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.Query.Direction;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link TaskFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
 public class TaskFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    RecyclerView recyclerView;
+    private static final String TAG = "TaskFragment";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public TaskFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment TaskFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static TaskFragment newInstance(String param1, String param2) {
-        TaskFragment fragment = new TaskFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseAuth mAuth;
+    FirebaseUser mUser;
+    String id = "";
+    CardView cvAddTask;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_task, container, false);
+        View root = inflater.inflate(R.layout.fragment_task, container, false);
+        mAuth = FirebaseAuth.getInstance();
+        mUser = mAuth.getCurrentUser();
+        recyclerView = root.findViewById(R.id.recyclerViewDocument);
+        cvAddTask = root.findViewById(R.id.cvAddTask);
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            id = bundle.getString("projectID");
+            loadTask(id);
+
+            FloatingActionButton fab = root.findViewById(R.id.fab);
+
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    GetRandString g = new GetRandString(getActivity());
+
+                    Map<String, Object> dummy = new HashMap<>();
+                    dummy.put("taskName", g.getLastName()+g.getLastName());
+                    dummy.put("taskDescription", g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName());
+                    dummy.put("taskCreatedAt", FieldValue.serverTimestamp());
+                    dummy.put("taskResolved", false);
+                    dummy.put("taskResolvedAt", FieldValue.serverTimestamp());
+                    dummy.put("projectID", id);
+
+                    db.collection("Task").add(dummy)
+                            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                @Override
+                                public void onSuccess(DocumentReference documentReference) {
+                                    loadTask(id);
+
+                                }
+                            });
+                }
+            });
+
+            cvAddTask.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), AddTaskActivity.class);
+                    intent.putExtra("id", id);
+                    startActivity(intent);
+                }
+            });
+
+        }
+
+
+        return root;
+    }
+
+    public void loadTask (String s) {
+        final ArrayList<String> name = new ArrayList<String>();
+        final ArrayList<String> description = new ArrayList<String>();
+        final ArrayList<Date> date = new ArrayList<java.util.Date>();
+        final ArrayList<String> id = new ArrayList<String>();
+        final ArrayList<Boolean> resolved = new ArrayList<Boolean>();
+        db.collection("Task").whereEqualTo("projectID", s).orderBy("taskCreatedAt", Direction.DESCENDING)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                name.add(document.getString("taskName"));
+                                date.add(document.getDate("taskCreatedAt"));
+                                description.add(document.getString("taskDescription"));
+                                id.add(document.getId());
+                                resolved.add(document.getBoolean("taskResolved"));
+                            }
+                        } else {
+                            Toast.makeText(getActivity(), "Failed to read task", Toast.LENGTH_SHORT).show();
+
+                        }
+                        TaskAdapter taskAdapter = new TaskAdapter(getActivity(), id, name, description, date, resolved);
+                        recyclerView.setAdapter(taskAdapter);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.d(TAG, e.toString());
+                        }
+                    });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadTask(id);
     }
 }

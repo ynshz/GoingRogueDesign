@@ -134,4 +134,301 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string-array name="random_hotel_names">
+        <item>	Moody Moon	</item>
+        <item>	Mandarin Oriental	</item>
+        <item>	Four Seasons Hotel	</item>
+        <item>	Knights Inn	</item>
+        <item>	Radisson Hotel	</item>
+        <item>	Classio Hotel	</item>
+        <item>	The Bay Club	</item>
+        <item>	Travelodge	</item>
+        <item>	Jack Summer Inn	</item>
+        <item>	Hotel Grizzly	</item>
+        <item>	Twice Happy Resorts	</item>
+        <item>	Hotel Agoura	</item>
+        <item>	Hotel Crossroads	</item>
+        <item>	Grand Hotel	</item>
+        <item>	The Bristol Hotel	</item>
+        <item>	Hollywood Sands	</item>
+        <item>	The Gourmet Resorts	</item>
+        <item>	Cotton House Hotel	</item>
+        <item>	The Watson Hotel	</item>
+        <item>	Pacifica Hotel	</item>
+        <item>	Hotel Barry Love	</item>
+        <item>	Cosmopolitan Hotel	</item>
+        <item>	White Dove Hotels	</item>
+        <item>	Reefs Resort Club	</item>
+        <item>	Beachwalk Resort	</item>
+        <item>	Fountain Fun	</item>
+        <item>	Hotel Vitale	</item>
+        <item>	Cable Car Hotel	</item>
+        <item>	The Mosser Hotel	</item>
+        <item>	Redstone	</item>
+        <item>	Hotel Vitale	</item>
+        <item>	Land’s End Resort	</item>
+        <item>	Manchester Grand Hyatt	</item>
+        <item>	Palace Hotel	</item>
+        <item>	Paradise Point Resort	</item>
+        <item>	Kemp Mill	</item>
+    </string-array>
+
+    <string-array name="random_first_names">
+        <item>	Theodore	</item>
+        <item>	Quentin	</item>
+        <item>	Eliezer	</item>
+        <item>	Howard	</item>
+        <item>	Kamron	</item>
+        <item>	Jasiah	</item>
+        <item>	Rylan	</item>
+        <item>	Samuel	</item>
+        <item>	Dane	</item>
+        <item>	Dominick	</item>
+        <item>	Jaylon	</item>
+        <item>	Rhett	</item>
+        <item>	Zackary	</item>
+        <item>	Jovanny	</item>
+        <item>	Semaj	</item>
+        <item>	Spencer	</item>
+        <item>	Douglas	</item>
+        <item>	Julian	</item>
+        <item>	Zaire	</item>
+        <item>	Arnav	</item>
+        <item>	Frank	</item>
+        <item>	Cash	</item>
+        <item>	Cullen	</item>
+        <item>	Reilly	</item>
+        <item>	Javon	</item>
+        <item>	Peter	</item>
+        <item>	Oswaldo	</item>
+        <item>	Joey	</item>
+        <item>	Joshua	</item>
+        <item>	Denzel	</item>
+        <item>	Keegan	</item>
+        <item>	Tripp	</item>
+        <item>	Skyler	</item>
+        <item>	Elias	</item>
+        <item>	Christian	</item>
+        <item>	Izaiah	</item>
+        <item>	Immanuel	</item>
+        <item>	Pierce	</item>
+        <item>	Jabari	</item>
+        <item>	Ahmed	</item>
+        <item>	Adan	</item>
+        <item>	Nico	</item>
+        <item>	Jaidyn	</item>
+        <item>	Jesus	</item>
+        <item>	Jefferson	</item>
+        <item>	Kingston	</item>
+        <item>	Erick	</item>
+        <item>	Xander	</item>
+        <item>	Beau	</item>
+        <item>	Jair	</item>
+        <item>	Callum	</item>
+        <item>	Armani	</item>
+        <item>	Ahmad	</item>
+        <item>	Braxton	</item>
+        <item>	Blaine	</item>
+        <item>	Jairo	</item>
+        <item>	Esteban	</item>
+        <item>	Bronson	</item>
+        <item>	Miguel	</item>
+        <item>	Chance	</item>
+        <item>	Javion	</item>
+        <item>	Slade	</item>
+        <item>	Cannon	</item>
+        <item>	Davis	</item>
+        <item>	Demarcus	</item>
+        <item>	Blaze	</item>
+        <item>	Darnell	</item>
+        <item>	Zane	</item>
+        <item>	Max	</item>
+        <item>	Adolfo	</item>
+        <item>	Deon	</item>
+        <item>	Marcus	</item>
+        <item>	Sincere	</item>
+        <item>	Antony	</item>
+        <item>	Augustus	</item>
+        <item>	Brycen	</item>
+        <item>	Caiden	</item>
+        <item>	Mario	</item>
+        <item>	Jamal	</item>
+        <item>	Larry	</item>
+        <item>	Brooks	</item>
+        <item>	Joseph	</item>
+        <item>	Uriah	</item>
+        <item>	Landen	</item>
+        <item>	Elliot	</item>
+        <item>	Mike	</item>
+        <item>	Dillon	</item>
+        <item>	Roy	</item>
+        <item>	Lane	</item>
+        <item>	Franco	</item>
+        <item>	Matthew	</item>
+        <item>	Elijah	</item>
+        <item>	Myles	</item>
+        <item>	Shamar	</item>
+        <item>	Jagger	</item>
+        <item>	Malaki	</item>
+        <item>	Kyson	</item>
+        <item>	Brayan	</item>
+        <item>	Gustavo	</item>
+        <item>	Terrence	</item>
+    </string-array>
+
+    <string-array name="random_last_names">
+        <item>	Huffman	</item>
+        <item>	Cruz	</item>
+        <item>	Bennett	</item>
+        <item>	Burke	</item>
+        <item>	Grimes	</item>
+        <item>	May	</item>
+        <item>	Trujillo	</item>
+        <item>	Andrade	</item>
+        <item>	Archer	</item>
+        <item>	Gutierrez	</item>
+        <item>	Salinas	</item>
+        <item>	Wilkerson	</item>
+        <item>	Mcneil	</item>
+        <item>	Singh	</item>
+        <item>	Hahn	</item>
+        <item>	Shepard	</item>
+        <item>	Yoder	</item>
+        <item>	Hensley	</item>
+        <item>	Madden	</item>
+        <item>	Spence	</item>
+        <item>	Underwood	</item>
+        <item>	Little	</item>
+        <item>	Mclaughlin	</item>
+        <item>	Avila	</item>
+        <item>	Crawford	</item>
+        <item>	Chen	</item>
+        <item>	Stone	</item>
+        <item>	Mullins	</item>
+        <item>	Stein	</item>
+        <item>	Cline	</item>
+        <item>	Vincent	</item>
+        <item>	Santiago	</item>
+        <item>	Boyer	</item>
+        <item>	Finley	</item>
+        <item>	Franklin	</item>
+        <item>	Olsen	</item>
+        <item>	Kerr	</item>
+        <item>	Michael	</item>
+        <item>	Henry	</item>
+        <item>	Berry	</item>
+        <item>	Snyder	</item>
+        <item>	Sawyer	</item>
+        <item>	Gilbert	</item>
+        <item>	Sims	</item>
+        <item>	Randolph	</item>
+        <item>	Rojas	</item>
+        <item>	Strickland	</item>
+        <item>	Sullivan	</item>
+        <item>	Freeman	</item>
+        <item>	Potts	</item>
+        <item>	Olson	</item>
+        <item>	Mcintyre	</item>
+        <item>	Noble	</item>
+        <item>	Hoffman	</item>
+        <item>	Hancock	</item>
+        <item>	Small	</item>
+        <item>	Calhoun	</item>
+        <item>	Ball	</item>
+        <item>	Hart	</item>
+        <item>	Barr	</item>
+        <item>	Bernard	</item>
+        <item>	Mahoney	</item>
+        <item>	Montes	</item>
+        <item>	Gates	</item>
+        <item>	Case	</item>
+        <item>	Banks	</item>
+        <item>	Perez	</item>
+        <item>	Fuller	</item>
+        <item>	Buckley	</item>
+        <item>	Graham	</item>
+        <item>	Morrow	</item>
+        <item>	Mcfarland	</item>
+        <item>	Huber	</item>
+        <item>	French	</item>
+        <item>	Bonilla	</item>
+        <item>	Flynn	</item>
+        <item>	Evans	</item>
+        <item>	Carlson	</item>
+        <item>	Sweeney	</item>
+        <item>	Hobbs	</item>
+        <item>	Hampton	</item>
+        <item>	Ross	</item>
+        <item>	Gilmore	</item>
+        <item>	Manning	</item>
+        <item>	Adams	</item>
+        <item>	Villegas	</item>
+        <item>	Reyes	</item>
+        <item>	Mayer	</item>
+        <item>	Hammond	</item>
+        <item>	Mayo	</item>
+        <item>	Gibbs	</item>
+        <item>	Horn	</item>
+        <item>	Castaneda	</item>
+        <item>	Blake	</item>
+        <item>	Hogan	</item>
+        <item>	Fry	</item>
+        <item>	Yang	</item>
+        <item>	Padilla	</item>
+        <item>	Newman	</item>
+        <item>	Roman	</item>
+    </string-array>
+    <string-array name="random_city_names">
+        <item>	Omaha	</item>
+        <item>	Denver	</item>
+        <item>	Tokeland	</item>
+        <item>	Rigby	</item>
+        <item>	Osceola Mills	</item>
+        <item>	Goldenrod	</item>
+        <item>	Harrold	</item>
+        <item>	Marty	</item>
+        <item>	Rodney Village	</item>
+        <item>	Richmondville	</item>
+        <item>	Trafalgar	</item>
+        <item>	Big Beaver	</item>
+        <item>	Housatonic	</item>
+        <item>	Brush	</item>
+        <item>	Wataga	</item>
+        <item>	Gardnertown	</item>
+        <item>	Stoneville	</item>
+        <item>	Wabash	</item>
+        <item>	Quamba	</item>
+        <item>	Dillsboro	</item>
+        <item>	Eureka Roadhouse	</item>
+        <item>	Wolbach	</item>
+        <item>	Montrose	</item>
+        <item>	Indian Springs	</item>
+        <item>	Morrison Bluff	</item>
+        <item>	Fleischmanns	</item>
+        <item>	Mulhall	</item>
+        <item>	Penns Grove	</item>
+        <item>	El Paraiso	</item>
+        <item>	Seabrook	</item>
+        <item>	Keams Canyon	</item>
+        <item>	Gila Bend	</item>
+        <item>	Caroline	</item>
+        <item>	Sugden	</item>
+        <item>	Fond du Lac	</item>
+        <item>	Kemp Mill	</item>
+        <item>	Spreckels	</item>
+        <item>	Myerstown	</item>
+        <item>	Avinger	</item>
+        <item>	Walhalla	</item>
+        <item>	Galloway	</item>
+        <item>	Howards Grove	</item>
+        <item>	Mammoth	</item>
+        <item>	Franklin Square	</item>
+        <item>	Northbrook	</item>
+        <item>	Omar	</item>
+        <item>	French Camp	</item>
+        <item>	Paw Paw Lake	</item>
+        <item>	Arbutus	</item>
+        <item>	Buford	</item>
+    </string-array>
+
 </resources>
