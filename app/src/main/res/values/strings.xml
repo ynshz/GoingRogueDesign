@@ -430,5 +430,6 @@
         <item>	Arbutus	</item>
         <item>	Buford	</item>
     </string-array>
+    <string name="title_activity_maps">Map</string>
 
 </resources>

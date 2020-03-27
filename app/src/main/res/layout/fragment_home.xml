@@ -30,7 +30,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:text="Sign in"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/ivMoreOptions"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -54,12 +54,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
                 android:layout_marginBottom="8dp"
                 android:text="GOING ROGUE DESIGN"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/ivHomeLogo" />
 
             <TextView
@@ -70,7 +73,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:text="Welcome,"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toStartOf="@+id/tvHomeSignInUsername"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -78,10 +81,9 @@
                 android:id="@+id/ivMoreOptions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvHomeSignInUsername"
                 app:srcCompat="@drawable/ic_more_vert_black_24dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -135,7 +137,7 @@
                             android:scrollbarAlwaysDrawHorizontalTrack="false"
                             android:scrollbarAlwaysDrawVerticalTrack="false"
                             android:text="List of services"
-                            android:textSize="18sp"
+                            android:textSize="14sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -176,7 +178,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="36dp"
                     android:text="Follow us on social media"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cvHomeListServices" />
@@ -218,6 +220,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
+                    android:paddingLeft="32dp"
+                    android:paddingRight="32dp"
                     android:text="Request Information"
                     android:textAllCaps="false"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -240,7 +244,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="GRD@GoingRogueDesignLLC.com"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:textStyle="italic"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -253,7 +257,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="32dp"
                     android:text="https://www.goingroguedesignllc.com"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

@@ -16,11 +16,14 @@
             android:id="@+id/cardView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardElevation="0dp">
+            app:cardElevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@color/white">
 
                 <androidx.cardview.widget.CardView
@@ -33,6 +36,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="16dp">
+
+                        <ImageView
+                            android:id="@+id/ivMap"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_map_black_24dp" />
 
                         <ImageView
                             android:id="@+id/ivBack"
@@ -49,7 +61,8 @@
                             android:layout_height="wrap_content"
                             android:text="Title"
                             android:textColor="@android:color/black"
-                            android:textSize="24sp"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -62,38 +75,43 @@
                     android:id="@+id/textView32"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:text="Lead:"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="@+id/textView28"
-                    app:layout_constraintTop_toBottomOf="@+id/textView28" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvDate" />
 
                 <TextView
                     android:id="@+id/textView28"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:text="Start Date:"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="@+id/textView12"
-                    app:layout_constraintTop_toBottomOf="@+id/textView12" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvStatus" />
 
                 <TextView
                     android:id="@+id/textView12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:text="Status:"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="@+id/textView11"
-                    app:layout_constraintTop_toBottomOf="@+id/textView11" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvAddress" />
 
                 <TextView
                     android:id="@+id/textView11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="8dp"
                     android:text="Address:"
-                    android:textSize="16sp"
-                    app:layout_constraintTop_toBottomOf="@+id/cardView6"
-                    tools:layout_editor_absoluteX="17dp" />
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView6" />
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guideline2"
@@ -121,43 +139,48 @@
 
                 <TextView
                     android:id="@+id/tvAddress"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
                     android:text="TextView"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/guideline3"
                     app:layout_constraintTop_toTopOf="@+id/textView11" />
 
                 <TextView
                     android:id="@+id/tvStatus"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
                     android:text="TextView"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:textStyle="italic"
+                    app:layout_constraintEnd_toEndOf="@+id/tvAddress"
                     app:layout_constraintStart_toStartOf="@+id/tvAddress"
-                    app:layout_constraintTop_toBottomOf="@+id/tvAddress" />
+                    app:layout_constraintTop_toTopOf="@+id/textView12" />
 
                 <TextView
                     android:id="@+id/tvDate"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="TextView"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@+id/tvStatus"
                     app:layout_constraintStart_toStartOf="@+id/tvStatus"
-                    app:layout_constraintTop_toBottomOf="@+id/tvStatus" />
+                    app:layout_constraintTop_toTopOf="@+id/textView28" />
 
                 <TextView
                     android:id="@+id/tvLead"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="TextView"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@+id/tvDate"
                     app:layout_constraintStart_toStartOf="@+id/tvDate"
-                    app:layout_constraintTop_toBottomOf="@+id/tvDate" />
+                    app:layout_constraintTop_toTopOf="@+id/textView32" />
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guideline8"

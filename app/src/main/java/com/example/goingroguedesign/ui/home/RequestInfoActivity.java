@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+
 import com.example.goingroguedesign.R;
 
 public class RequestInfoActivity extends AppCompatActivity {
@@ -16,7 +17,8 @@ public class RequestInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_request_info);
         ((AppCompatActivity) RequestInfoActivity.this).getSupportActionBar().hide();
 
-        ivBackButton = findViewById(R.id.ivBackButtonRequestInfo);
+
+        ivBackButton = findViewById(R.id.ivBack);
 
         ivBackButton.setOnClickListener(new View.OnClickListener() {
             @Override

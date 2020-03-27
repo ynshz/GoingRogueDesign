@@ -48,7 +48,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:text="Srvice Title"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/ivServiceImage"
                 app:layout_constraintTop_toTopOf="@+id/ivServiceImage" />

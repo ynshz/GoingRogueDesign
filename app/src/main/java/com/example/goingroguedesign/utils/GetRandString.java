@@ -46,4 +46,34 @@ public class GetRandString {
         String s = h[new Random().nextInt(h.length)];
         return s;
     }
+
+    public String getStatus () {
+        String[] strings = {"New", "Started", "Completed", "Closed"};
+        String string = strings[new Random().nextInt(strings.length)];
+        return string;
+    }
+
+    public String getPhoneNumber () {
+        int i1 = new Random().nextInt(1000 - 100) +100;
+        int i2 = new Random().nextInt(10000000 - 1000000) +1000000;
+        return (i1 +""+ i2);
+    }
+
+    public String getEmail () {
+        String[] strings = {"gmail", "yahoo", "hotmail", "aol", "outlook", "gmail", "gmail"};
+        String[] a1 = context.getResources().getStringArray(R.array.random_last_names);
+        String[] a2 = context.getResources().getStringArray(R.array.random_last_names);
+        String s1 = a1[new Random().nextInt(a1.length)];
+        String s2 = a2[new Random().nextInt(a2.length)];
+        String s3 = strings[new Random().nextInt(strings.length)];
+
+        return (s1 + s2 + "@" + s3 + ".com");
+    }
+
+    public String getContractorType () {
+        String[] a1 = context.getResources().getStringArray(R.array.contractor_type_arrays);
+        String s1 = a1[new Random().nextInt(a1.length)];
+
+        return s1;
+    }
 }

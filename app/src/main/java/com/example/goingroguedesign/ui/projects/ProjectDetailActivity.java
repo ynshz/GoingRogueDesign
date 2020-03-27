@@ -6,9 +6,11 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.goingroguedesign.MainActivity;
 import com.example.goingroguedesign.R;
 import com.example.goingroguedesign.ui.account.UpdateEmailActivity;
+import com.example.goingroguedesign.ui.account.UpdateUsernameActivity;
 import com.google.android.material.tabs.TabLayout;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,7 +21,7 @@ public class ProjectDetailActivity extends AppCompatActivity {
 
     String id, title, address, status, date, lead;
     TextView tvTitle, tvAddress, tvStatus, tvDate, tvLead;
-    ImageView ivDocument, ivCalendar, ivInvoice, ivTask, ivBack, ivNote;
+    ImageView ivDocument, ivCalendar, ivInvoice, ivTask, ivBack, ivNote, ivMap;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +38,7 @@ public class ProjectDetailActivity extends AppCompatActivity {
         ivNote = findViewById(R.id.ivNote);
          */
         ivBack = findViewById(R.id.ivBack);
+        ivMap = findViewById(R.id.ivMap);
         tvTitle = findViewById(R.id.tvName);
         tvAddress = findViewById(R.id.tvAddress);
         tvStatus = findViewById(R.id.tvStatus);
@@ -55,6 +58,21 @@ public class ProjectDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+        ivMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProjectDetailActivity.this, MapsActivity.class);
+                startActivity(intent);
+                /*
+                Uri locationUri = Uri.parse("http://maps.google.co.in/maps?q=" + address);
+                Intent I = new Intent(Intent.ACTION_VIEW, locationUri);
+                if (I.resolveActivity(getPackageManager()) != null) {
+                    startActivity(I);
+                }
+
+                 */
             }
         });
         /*

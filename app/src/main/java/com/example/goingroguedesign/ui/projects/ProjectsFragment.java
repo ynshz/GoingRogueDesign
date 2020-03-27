@@ -41,9 +41,10 @@ public class ProjectsFragment extends Fragment {
     ArrayList<String> status = new ArrayList<String>();
     ArrayList<Date> date = new ArrayList<java.util.Date>();
     ArrayList<String> lead = new ArrayList<String>();
+    ArrayList<String> contractor = new ArrayList<String>();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+                             final ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_projects, container, false);
 
@@ -61,9 +62,10 @@ public class ProjectsFragment extends Fragment {
                     dummyProject.put("projectAddress", g.getRandAddress());
                     dummyProject.put("projectName", g.getHotel());
                     dummyProject.put("projectStartDate", FieldValue.serverTimestamp());
-                    dummyProject.put("projectStatus", "active");
+                    dummyProject.put("projectStatus", g.getStatus());
                     dummyProject.put("managerName", "Shize Yuan");
                     dummyProject.put("customerID", mAuth.getUid());
+                    dummyProject.put("projectMainContractor", g.getFirstName() + " " +g.getLastName());
 
                     db.collection("Project").add(dummyProject);
                 }
@@ -82,11 +84,12 @@ public class ProjectsFragment extends Fragment {
                                     status.add(document.getString("projectStatus"));
                                     date.add(document.getDate("projectStartDate"));
                                     lead.add(document.getString("managerName"));
+                                    contractor.add(document.getString("projectMainContractor"));
                                 }
                             } else {
                                 Toast.makeText(getActivity(), "Failed to read projects", Toast.LENGTH_SHORT).show();
                             }
-                            ProjectAdapter projectAdapter = new ProjectAdapter(getActivity(), id, title, address, status, date, lead);
+                            ProjectAdapter projectAdapter = new ProjectAdapter(getActivity(), id, title, address, status, date, lead, contractor);
                             recyclerView.setAdapter(projectAdapter);
                             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                         }

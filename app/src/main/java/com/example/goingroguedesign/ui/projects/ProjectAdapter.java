@@ -18,11 +18,11 @@ import java.util.Date;
 
 public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.MyViewHolder> {
 
-    ArrayList<String> id, title, address, status, lead;
+    ArrayList<String> id, title, address, status, lead, contractor;
     ArrayList<Date> date;
     Context context;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    public ProjectAdapter(Context ct, ArrayList<String> s1, ArrayList<String> s2, ArrayList<String> s3, ArrayList<String> s4, ArrayList<Date> s5, ArrayList<String> s6){
+    public ProjectAdapter(Context ct, ArrayList<String> s1, ArrayList<String> s2, ArrayList<String> s3, ArrayList<String> s4, ArrayList<Date> s5, ArrayList<String> s6, ArrayList<String> s7){
         context = ct;
         id = s1;
         title = s2;
@@ -30,6 +30,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.MyViewHo
         status = s4;
         date = s5;
         lead = s6;
+        contractor = s7;
     }
 
     @NonNull
@@ -45,8 +46,26 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.MyViewHo
         holder.text1.setText(title.get(position));
         holder.text2.setText(address.get(position));
         holder.text3.setText(status.get(position));
+        switch (status.get(position)) {
+            case "Closed":
+                holder.text3.setTextColor(context.getResources().getColor(R.color.black));
+                break;
+            case "New":
+                holder.text3.setTextColor(context.getResources().getColor(R.color.red));
+                break;
+            case "Started":
+                holder.text3.setTextColor(context.getResources().getColor(R.color.yellow));
+                break;
+            case "Completed":
+                holder.text3.setTextColor(context.getResources().getColor(R.color.green));
+                break;
+            default:
+                break;
+        }
+
         holder.text4.setText(date.get(position).toString());
         holder.text5.setText(lead.get(position));
+        holder.text6.setText(contractor.get(position));
 
         holder.projectItemCard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +97,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.MyViewHo
 
     public class MyViewHolder  extends RecyclerView.ViewHolder{
 
-        TextView text1, text2, text3, text4, text5;
+        TextView text1, text2, text3, text4, text5, text6;
         CardView projectItemCard;
         ImageView ivDelete;
         public MyViewHolder(@NonNull View itemView) {
@@ -88,6 +107,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.MyViewHo
             text3 = itemView.findViewById(R.id.tvStatus);
             text4 = itemView.findViewById(R.id.tvStartDate);
             text5 = itemView.findViewById(R.id.tvLeadName);
+            text6 = itemView.findViewById(R.id.tvContractor);
             projectItemCard = itemView.findViewById(R.id.cvProjectItem);
 
             //delete this button before publish

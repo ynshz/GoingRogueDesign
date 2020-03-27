@@ -10,10 +10,11 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="80dp"
         android:clickable="true"
         android:src="@drawable/ic_add_black_24dp"
-        tools:layout_editor_absoluteX="339dp"
-        tools:layout_editor_absoluteY="593dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvProject"
@@ -46,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:text="Projects"
                 android:textColor="@color/black"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

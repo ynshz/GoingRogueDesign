@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class NoteDetailActivity extends AppCompatActivity {
+    private static final String TAG = "NoteDetail";
 
     String id, name, description, newTitle, newDes;
     TextView textView, cancel, submit, delete;
@@ -83,8 +84,10 @@ public class NoteDetailActivity extends AppCompatActivity {
                     Toast.makeText(NoteDetailActivity.this, "Please fill all fields.", Toast.LENGTH_SHORT).show();
 
                 } else {
+                    Toast.makeText(NoteDetailActivity.this, newTitle + id, Toast.LENGTH_SHORT).show();
+
                     final DocumentReference taskRef = db.collection("Note").document(id);
-                    taskRef.update("noteName", newTitle)
+                    taskRef.update("noteTitle", newTitle)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {

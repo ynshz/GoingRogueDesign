@@ -19,13 +19,14 @@ import java.util.ArrayList;
 
 public class ContractorAdapter extends RecyclerView.Adapter<ContractorAdapter.MyViewHolder> {
 
-    ArrayList<String> name, phone, email, address, id, type;
+    ArrayList<String> firstName, lastName, phone, email, address, id, type;
     Context context;
 
-    public ContractorAdapter(Context ct,  ArrayList<String> s1,  ArrayList<String> s2, ArrayList<String> s3, ArrayList<String> s4, ArrayList<String> s5, ArrayList<String> s6){
+    public ContractorAdapter(Context ct,  ArrayList<String> s1,  ArrayList<String> s2First, ArrayList<String> s2Last, ArrayList<String> s3, ArrayList<String> s4, ArrayList<String> s5, ArrayList<String> s6){
         context = ct;
         id = s1;
-        name = s2;
+        firstName = s2First;
+        lastName = s2Last;
         phone = s3;
         email = s4;
         address = s5;
@@ -40,13 +41,27 @@ public class ContractorAdapter extends RecyclerView.Adapter<ContractorAdapter.My
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ContractorAdapter.MyViewHolder holder, int position) {
-        holder.text1.setText(name.get(position));
+    public void onBindViewHolder(@NonNull ContractorAdapter.MyViewHolder holder, final int position) {
+        holder.text1.setText(firstName.get(position) + " " + lastName.get(position));
         holder.text2.setText(phone.get(position));
         holder.text3.setText(email.get(position));
         holder.text4.setText(address.get(position));
         holder.text5.setText(type.get(position));
 
+        holder.contractorCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ContractorDetailActivity.class);
+                intent.putExtra("id", id.get(position));
+                intent.putExtra("firstName", firstName.get(position));
+                intent.putExtra("lastName", lastName.get(position));
+                intent.putExtra("address", address.get(position));
+                intent.putExtra("phone", phone.get(position));
+                intent.putExtra("email", email.get(position));
+                intent.putExtra("type", type.get(position));
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

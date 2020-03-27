@@ -25,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Update Name"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/tvSubmit"
@@ -76,7 +76,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="32dp"
         android:text="First Name"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
@@ -100,7 +100,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="32dp"
         android:text="Last Name"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etFirstName" />
 
@@ -124,7 +124,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="32dp"
         android:text="Middle Name/Initial"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etLastName" />
 </androidx.constraintlayout.widget.ConstraintLayout>

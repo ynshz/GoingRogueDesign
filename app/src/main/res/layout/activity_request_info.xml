@@ -20,18 +20,18 @@
             android:padding="8dp">
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Request Information"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/ivBackButtonRequestInfo"
+                app:layout_constraintStart_toEndOf="@+id/ivBack"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/ivBackButtonRequestInfo"
+                android:id="@+id/ivBack"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -67,12 +67,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
                     android:text="Email Address *"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toStartOf="@+id/textView7"
-                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/etLastName"
+                    app:layout_constraintTop_toBottomOf="@+id/etLastName" />
 
                 <EditText
-                    android:id="@+id/editText2"
+                    android:id="@+id/etLastName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -82,7 +82,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
                 <EditText
-                    android:id="@+id/editText7"
+                    android:id="@+id/etMessage"
                     android:layout_width="0dp"
                     android:layout_height="100dp"
                     android:layout_marginTop="8dp"
@@ -96,7 +96,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
                 <EditText
-                    android:id="@+id/editText5"
+                    android:id="@+id/etEmail"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -106,7 +106,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
                 <EditText
-                    android:id="@+id/editText6"
+                    android:id="@+id/etSubject"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -119,21 +119,22 @@
                     android:id="@+id/textView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="First Name"
-                    app:layout_constraintStart_toStartOf="@+id/editText"
-                    app:layout_constraintTop_toBottomOf="@+id/editText" />
+                    android:layout_marginTop="8dp"
+                    android:text="Last Name *"
+                    app:layout_constraintStart_toStartOf="@+id/etFirstName"
+                    app:layout_constraintTop_toBottomOf="@+id/etFirstName" />
 
                 <TextView
                     android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Name *"
-                    android:textSize="20sp"
+                    android:text="First Name *"
+                    android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/editText"
+                    android:id="@+id/etFirstName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:ems="12"
@@ -143,25 +144,17 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
                 <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Last Name"
-                    app:layout_constraintStart_toStartOf="@+id/editText2"
-                    app:layout_constraintTop_toBottomOf="@+id/editText2" />
-
-                <TextView
                     android:id="@+id/textView9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
                     android:text="Subject *"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toStartOf="@+id/editText5"
-                    app:layout_constraintTop_toBottomOf="@+id/editText5" />
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/etEmail"
+                    app:layout_constraintTop_toBottomOf="@+id/etEmail" />
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/button"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -169,8 +162,8 @@
                     android:elevation="0dp"
                     android:text="S u b m i t"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/editText7"
-                    app:layout_constraintTop_toBottomOf="@+id/editText7" />
+                    app:layout_constraintStart_toStartOf="@+id/etMessage"
+                    app:layout_constraintTop_toBottomOf="@+id/etMessage" />
 
                 <TextView
                     android:id="@+id/textView10"
@@ -178,9 +171,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
                     android:text="Message *"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toStartOf="@+id/editText6"
-                    app:layout_constraintTop_toBottomOf="@+id/editText6" />
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/etSubject"
+                    app:layout_constraintTop_toBottomOf="@+id/etSubject" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>

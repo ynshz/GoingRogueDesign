@@ -1,5 +1,6 @@
 package com.example.goingroguedesign.ui.account;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
@@ -33,12 +34,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class AccountFragment extends Fragment {
 
     private static final String TAG = "MyActivity";
-    CardView cvAccountUsername, cvAccountName, cvAccountAddress, cvAccountEmail, cvAccountPhoneNumber, cvAccountPassword, cvAccountContractor, cvAccountSignOut;
+    CardView cvAccountUsername, cvAccountName, cvAccountAddress, cvAccountEmail, cvAccountPhoneNumber, cvAccountPassword, cvAccountContractor, cvAccountSignOut, cvSetting;
     private FirebaseAuth mAuth;
     FirebaseUser mUser;
     TextView tvUsername, tvID, tvName, tvPhoneNumber, tvAddress, tvEmail;
     String username, id, firstName, lastName, phoneNumber, address, email;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    AlertDialog dialog;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -56,6 +58,7 @@ public class AccountFragment extends Fragment {
             cvAccountPassword = root.findViewById(R.id.cvAccountPassword);
             cvAccountContractor = root.findViewById(R.id.cvAccountContractors);
             cvAccountSignOut = root.findViewById(R.id.cvAccountSignOut);
+            cvSetting = root.findViewById(R.id.cvSettings);
             tvUsername = root.findViewById(R.id.tvAccountCurrentUsername);
             tvID = root.findViewById(R.id.tvAccountCurrentId);
             tvName = root.findViewById(R.id.tvAccountCurrentName);
@@ -143,6 +146,14 @@ public class AccountFragment extends Fragment {
                 }
             });
 
+            cvSetting.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), SettingActivity.class);
+                    startActivity(intent);
+                }
+            });
+
             return root;
         } else {
             Intent intent = new Intent(getActivity(), SignInActivity.class);
@@ -195,6 +206,7 @@ public class AccountFragment extends Fragment {
     }
 */
     public void initDBView() {
+        loadingAnimation();
         DocumentReference docRef = db.collection("Customer").document(mAuth.getUid());
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -215,6 +227,7 @@ public class AccountFragment extends Fragment {
                         tvPhoneNumber.setText(phoneNumber);
                         tvAddress.setText(address);
                         tvEmail.setText(email);
+                        dialog.dismiss();
                     } else {
                         mAuth.signOut();
                         Toast.makeText(getActivity(), "Cannot find user.", Toast.LENGTH_SHORT).show();
@@ -229,5 +242,14 @@ public class AccountFragment extends Fragment {
                 }
             }
         });
+    }
+    public void loadingAnimation() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        LayoutInflater inflater = getLayoutInflater();
+        builder.setView(inflater.inflate(R.layout.loading, null));
+        builder.setCancelable(false);
+
+        dialog = builder.create();
+        dialog.show();
     }
 }
