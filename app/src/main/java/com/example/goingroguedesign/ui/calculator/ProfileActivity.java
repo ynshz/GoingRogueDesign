@@ -1,12 +1,19 @@
 package com.example.goingroguedesign.ui.calculator;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.goingroguedesign.MainActivity;
 import com.example.goingroguedesign.R;
 import com.example.goingroguedesign.ui.home.RequestInfoActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -72,7 +79,15 @@ public class ProfileActivity extends AppCompatActivity {
                 } else {
                     quoteRequest.put("hasAccount", false);
                 }
-                db.collection(type).add(quoteRequest);
+                db.collection(type).add(quoteRequest)
+                        .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DocumentReference> task) {
+                                Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        });
             }
         });
 
