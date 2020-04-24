@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.recyclerview.widget.RecyclerView;
@@ -144,7 +145,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
             }
         });
 
-        holder.detail.setOnClickListener(new View.OnClickListener() {
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, TaskDetailActivity.class);
@@ -188,13 +189,15 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
         TextView text1, text2, text3;
         CheckBox checkBox;
         ImageView detail;
+        CardView cardView;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             text1 = itemView.findViewById(R.id.tvName);
             text2 = itemView.findViewById(R.id.tvDate);
             text3 = itemView.findViewById(R.id.tvDescription);
             checkBox = itemView.findViewById(R.id.checkBox);
-            detail = itemView.findViewById(R.id.ivDetails);
+            //detail = itemView.findViewById(R.id.ivDetails);
+            cardView = itemView.findViewById(R.id.cvTask);
         }
     }
 

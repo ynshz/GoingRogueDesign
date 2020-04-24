@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.goingroguedesign.MainActivity;
 import com.example.goingroguedesign.R;
+import com.example.goingroguedesign.utils.LoadingAnimation;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
@@ -23,16 +24,18 @@ public class UpdatePhoneActivity extends AppCompatActivity {
     EditText etPhoneNumber;
     TextView confirmBtn;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-
+    ValidateInput validateInput;
+    LoadingAnimation loadingAnimation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_phone);
         ((AppCompatActivity) UpdatePhoneActivity.this).getSupportActionBar().hide();
-
         TextView tvCancelUpdate = findViewById(R.id.tvCancelAdd);
         confirmBtn = findViewById(R.id.tvSubmit);
         etPhoneNumber = findViewById(R.id.etPhoneNumber);
+        validateInput = new ValidateInput(UpdatePhoneActivity.this, etPhoneNumber);
+        loadingAnimation = new LoadingAnimation(UpdatePhoneActivity.this);
 
         getData();
         setData();
@@ -46,25 +49,32 @@ public class UpdatePhoneActivity extends AppCompatActivity {
         confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                loadingAnimation.openLoadingAnimation();
                 DocumentReference addressRef = db.collection("Customer").document(id);
-                addressRef
-                        .update("customerPhoneNumber", etPhoneNumber.getText().toString())
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                Toast.makeText(UpdatePhoneActivity.this, "Updated Successfully", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(UpdatePhoneActivity.this, MainActivity.class);
-                                intent.putExtra("id", 3);
-                                startActivity(intent);
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(UpdatePhoneActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
-                                finish();
-                            }
-                        });
+                if (validateInput.validatePhoneNumber()){
+                    addressRef
+                            .update("customerPhoneNumber", etPhoneNumber.getText().toString())
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    loadingAnimation.closeLoadingAnimation();
+                                    Toast.makeText(UpdatePhoneActivity.this, "Updated Successfully", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(UpdatePhoneActivity.this, MainActivity.class);
+                                    intent.putExtra("id", 3);
+                                    startActivity(intent);
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(UpdatePhoneActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
+                                    finish();
+                                }
+                            });
+                } else {
+                    loadingAnimation.closeLoadingAnimation();
+                }
+
             }
         });
     }

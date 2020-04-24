@@ -59,13 +59,23 @@ public class ProjectsFragment extends Fragment {
                     GetRandString g = new GetRandString(getActivity());
 
                     Map<String, Object>dummyProject = new HashMap<>();
+                    dummyProject.put("projectMainContractorID", g.getRandAddress());
                     dummyProject.put("projectAddress", g.getRandAddress());
                     dummyProject.put("projectName", g.getHotel());
                     dummyProject.put("projectStartDate", FieldValue.serverTimestamp());
-                    dummyProject.put("projectStatus", g.getStatus());
+                    dummyProject.put("projectType", g.getStatus());
                     dummyProject.put("managerName", "Shize Yuan");
                     dummyProject.put("customerID", mAuth.getUid());
-                    dummyProject.put("projectMainContractor", g.getFirstName() + " " +g.getLastName());
+                    dummyProject.put("projectMainContractorName", g.getFirstName() + " " +g.getLastName());
+                    dummyProject.put("customerEmail", mUser.getEmail());
+                    dummyProject.put("managerID", "eUG5EtwnxPRBA2JZU9rp");
+                    dummyProject.put("projectDescription", g.getHotel()+" "+g.getRandAddress());
+                    dummyProject.put("projectID", "thisShouldBeProjectID");
+                    dummyProject.put("projectLatitude", 50.88);
+                    dummyProject.put("projectLongitude", -125.88);
+                    dummyProject.put("projectCreatedDate", FieldValue.serverTimestamp());
+
+
 
                     db.collection("Project").add(dummyProject);
                 }
@@ -81,10 +91,11 @@ public class ProjectsFragment extends Fragment {
                                     id.add(document.getId());
                                     title.add(document.getString("projectName"));
                                     address.add(document.getString("projectAddress"));
-                                    status.add(document.getString("projectStatus"));
+                                    status.add(document.getString("projectType"));
                                     date.add(document.getDate("projectStartDate"));
                                     lead.add(document.getString("managerName"));
-                                    contractor.add(document.getString("projectMainContractor"));
+                                    contractor.add(document.getString("projectMainContractorName"));
+
                                 }
                             } else {
                                 Toast.makeText(getActivity(), "Failed to read projects", Toast.LENGTH_SHORT).show();

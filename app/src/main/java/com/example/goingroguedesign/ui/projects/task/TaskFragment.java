@@ -70,12 +70,19 @@ public class TaskFragment extends Fragment {
                     GetRandString g = new GetRandString(getActivity());
 
                     Map<String, Object> dummy = new HashMap<>();
+
                     dummy.put("taskName", g.getLastName()+g.getLastName());
                     dummy.put("taskDescription", g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName());
-                    dummy.put("taskCreatedAt", FieldValue.serverTimestamp());
+                    dummy.put("taskCreatedDate", FieldValue.serverTimestamp());
                     dummy.put("taskResolved", false);
                     dummy.put("taskResolvedAt", FieldValue.serverTimestamp());
                     dummy.put("projectID", id);
+                    dummy.put("taskDueDate", FieldValue.serverTimestamp());
+
+                    //not going to use, here for keeping consistent with web/ios
+                    dummy.put("customerEmail", mUser.getEmail());
+                    dummy.put("taskType", "ongoing");
+                    dummy.put("taskID", "thisShouldBeTaskID");
 
                     db.collection("Task").add(dummy)
                             .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -109,7 +116,7 @@ public class TaskFragment extends Fragment {
         final ArrayList<Date> date = new ArrayList<java.util.Date>();
         final ArrayList<String> id = new ArrayList<String>();
         final ArrayList<Boolean> resolved = new ArrayList<Boolean>();
-        db.collection("Task").whereEqualTo("projectID", s).orderBy("taskCreatedAt", Direction.DESCENDING)
+        db.collection("Task").whereEqualTo("projectID", s).orderBy("taskCreatedDate", Direction.DESCENDING)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -117,7 +124,7 @@ public class TaskFragment extends Fragment {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 name.add(document.getString("taskName"));
-                                date.add(document.getDate("taskCreatedAt"));
+                                date.add(document.getDate("taskCreatedDate"));
                                 description.add(document.getString("taskDescription"));
                                 id.add(document.getId());
                                 resolved.add(document.getBoolean("taskResolved"));

@@ -46,22 +46,25 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.MyViewHo
         holder.text1.setText(title.get(position));
         holder.text2.setText(address.get(position));
         holder.text3.setText(status.get(position));
-        switch (status.get(position)) {
-            case "Closed":
-                holder.text3.setTextColor(context.getResources().getColor(R.color.black));
-                break;
-            case "New":
-                holder.text3.setTextColor(context.getResources().getColor(R.color.red));
-                break;
-            case "Started":
-                holder.text3.setTextColor(context.getResources().getColor(R.color.yellow));
-                break;
-            case "Completed":
-                holder.text3.setTextColor(context.getResources().getColor(R.color.green));
-                break;
-            default:
-                break;
+        if(status != null) {
+            switch (status.get(position)) {
+                case "Closed":
+                    holder.text3.setTextColor(context.getResources().getColor(R.color.black));
+                    break;
+                case "New":
+                    holder.text3.setTextColor(context.getResources().getColor(R.color.red));
+                    break;
+                case "Started":
+                    holder.text3.setTextColor(context.getResources().getColor(R.color.yellow));
+                    break;
+                case "Completed":
+                    holder.text3.setTextColor(context.getResources().getColor(R.color.green));
+                    break;
+                default:
+                    break;
+            }
         }
+
 
         holder.text4.setText(date.get(position).toString());
         holder.text5.setText(lead.get(position));

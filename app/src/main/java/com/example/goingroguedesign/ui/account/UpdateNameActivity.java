@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.goingroguedesign.MainActivity;
 import com.example.goingroguedesign.R;
+import com.example.goingroguedesign.utils.LoadingAnimation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -29,6 +30,8 @@ public class UpdateNameActivity extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     Boolean firstNameUpdated = false, lastNameUpdated = false;
     private FirebaseAuth mAuth;
+    ValidateInput v1, v2;
+    LoadingAnimation loadingAnimation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +43,11 @@ public class UpdateNameActivity extends AppCompatActivity {
         etFirstName = findViewById(R.id.etFirstName);
         etLastName = findViewById(R.id.etLastName);
         confirmBtn = findViewById(R.id.tvSubmit);
-
+        loadingAnimation = new LoadingAnimation(UpdateNameActivity.this);
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
+        v1 = new ValidateInput(UpdateNameActivity.this, etFirstName);
+        v2 = new ValidateInput(UpdateNameActivity.this, etLastName);
 
         getData();
         setData();
@@ -56,54 +61,61 @@ public class UpdateNameActivity extends AppCompatActivity {
         confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final DocumentReference addressRef = db.collection("Customer").document(id);
-                addressRef
-                        .update("customerFirstName", etFirstName.getText().toString())
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                addressRef
-                                        .update("customerLastName", etLastName.getText().toString())
-                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                            @Override
-                                            public void onSuccess(Void aVoid) {
-                                                FirebaseUser user = mAuth.getCurrentUser();
-                                                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                                        .setDisplayName(etFirstName.getText().toString())
-                                                        .build();
+                loadingAnimation.openLoadingAnimation();
+                if(v1.validateFirstName() && v2.validateLastName()){
+                    final DocumentReference addressRef = db.collection("Customer").document(id);
+                    addressRef
+                            .update("customerFirstName", etFirstName.getText().toString())
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    addressRef
+                                            .update("customerLastName", etLastName.getText().toString())
+                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
+                                                    FirebaseUser user = mAuth.getCurrentUser();
+                                                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                                            .setDisplayName(etFirstName.getText().toString())
+                                                            .build();
 
-                                                assert user != null;
-                                                user.updateProfile(profileUpdates)
-                                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                            @Override
-                                                            public void onComplete(@NonNull Task<Void> task) {
-                                                                if (task.isSuccessful()) {
-                                                                    Toast.makeText(UpdateNameActivity.this, "Updated Successfully", Toast.LENGTH_SHORT).show();
-                                                                    Intent intent = new Intent(UpdateNameActivity.this, MainActivity.class);
-                                                                    intent.putExtra("id", 3);
-                                                                    startActivity(intent);
+                                                    assert user != null;
+                                                    user.updateProfile(profileUpdates)
+                                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                @Override
+                                                                public void onComplete(@NonNull Task<Void> task) {
+                                                                    if (task.isSuccessful()) {
+                                                                        loadingAnimation.closeLoadingAnimation();
+                                                                        Toast.makeText(UpdateNameActivity.this, "Updated Successfully", Toast.LENGTH_SHORT).show();
+                                                                        Intent intent = new Intent(UpdateNameActivity.this, MainActivity.class);
+                                                                        intent.putExtra("id", 3);
+                                                                        startActivity(intent);
+                                                                    }
                                                                 }
-                                                            }
-                                                        });
+                                                            });
 
-                                            }
-                                        })
-                                        .addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
-                                                Toast.makeText(UpdateNameActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
-                                                finish();
-                                            }
-                                        });
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(UpdateNameActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
-                                finish();;
-                            }
-                        });
+                                                }
+                                            })
+                                            .addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    Toast.makeText(UpdateNameActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
+                                                    finish();
+                                                }
+                                            });
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(UpdateNameActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
+                                    finish();;
+                                }
+                            });
+                } else {
+                    loadingAnimation.closeLoadingAnimation();
+                }
+
 
 
             }

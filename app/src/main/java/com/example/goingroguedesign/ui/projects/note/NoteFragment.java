@@ -74,6 +74,8 @@ public class NoteFragment extends Fragment {
                     dummy.put("noteContent", g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName());
                     dummy.put("noteCreatedAt", FieldValue.serverTimestamp());
                     dummy.put("noteModifiedAt", FieldValue.serverTimestamp());
+                    dummy.put("notePictureUrl", "null");
+                    dummy.put("notePictureFilePath", "null");
                     dummy.put("projectID", id);
 
                     db.collection("Note").add(dummy)
@@ -108,6 +110,8 @@ public class NoteFragment extends Fragment {
         final ArrayList<Date> createdAt = new ArrayList<java.util.Date>();
         final ArrayList<Date> modifiedAt = new ArrayList<java.util.Date>();
         final ArrayList<String> id = new ArrayList<String>();
+        final ArrayList<String> url = new ArrayList<String>();
+        final ArrayList<String> filePath = new ArrayList<String>();
         db.collection("Note").whereEqualTo("projectID", s).orderBy("noteModifiedAt", Direction.DESCENDING)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -120,12 +124,14 @@ public class NoteFragment extends Fragment {
                                 modifiedAt.add(document.getDate("noteModifiedAt"));
                                 content.add(document.getString("noteContent"));
                                 id.add(document.getId());
+                                url.add(document.getString("notePictureUrl"));
+                                filePath.add(document.getString("notePictureFilePath"));
                             }
                         } else {
                             Toast.makeText(getActivity(), "Failed to read note", Toast.LENGTH_SHORT).show();
 
                         }
-                        NoteAdapter noteAdapter = new NoteAdapter(getActivity(), id, name, content, createdAt, modifiedAt);
+                        NoteAdapter noteAdapter = new NoteAdapter(getActivity(), id, name, content, createdAt, modifiedAt, url, filePath);
                         recyclerView.setAdapter(noteAdapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                     }

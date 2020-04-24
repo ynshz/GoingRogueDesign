@@ -63,9 +63,12 @@ public class DocumentFragment extends Fragment {
                     dummyDocument.put("documentDueDate", FieldValue.serverTimestamp());
                     dummyDocument.put("documentCompleted", false);
                     dummyDocument.put("documentCompletedAt", FieldValue.serverTimestamp());
-                    dummyDocument.put("documentUrl", "");
+                    dummyDocument.put("documentLink", "");
                     dummyDocument.put("projectID", id);
-
+                    dummyDocument.put("customerEmail",mUser.getEmail());
+                    dummyDocument.put("documentID","thisShouldBeDocumentID");
+                    dummyDocument.put("documentType","doc");
+                    dummyDocument.put("userID",mUser.getUid());
                     db.collection("Document").add(dummyDocument)
                             .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override

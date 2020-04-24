@@ -3,6 +3,10 @@ package com.example.goingroguedesign.ui.projects;
 import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.goingroguedesign.R;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -15,11 +19,24 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    float lat, lng;
+    TextView tvTitle, tvClose;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        tvTitle = findViewById(R.id.textView);
+        tvClose = findViewById(R.id.tvCancelAdd);
+
+        tvTitle.setText(getIntent().getStringExtra("title"));
+        tvClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -39,10 +56,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        lat = getIntent().getFloatExtra("lat", 0);
+        lng = getIntent().getFloatExtra("lng", 0);
+        Toast.makeText(MapsActivity.this, lat+" ", Toast.LENGTH_SHORT).show();
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
+        LatLng sydney = new LatLng(lat, lng);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
+
 }

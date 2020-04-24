@@ -1,6 +1,7 @@
 package com.example.goingroguedesign.ui.account;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.goingroguedesign.MainActivity;
@@ -21,6 +22,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,6 +43,8 @@ public class SignUpActivity extends AppCompatActivity {
     String email, password, username, firstname, lastname;
     ValidateInput validateInput;
     Button signUpButton;
+    AlertDialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,6 +90,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     public void signUpNewAccount() {
+        loadingAnimation();
         boolean emailVerified = validateInput.validateEmail();
         boolean passwordVerified = validateInput.validatePassword();
         boolean repeatPasswordVerified = validateInput.validateRepeatPassword();
@@ -123,9 +128,9 @@ public class SignUpActivity extends AppCompatActivity {
                                                     mUser.put("customerFirstName", firstname);
                                                     mUser.put("customerLastName", lastname);
                                                     mUser.put("customerUsername", username);
-                                                    mUser.put("customerPhoneNumber", "");
-                                                    mUser.put("customerType", "");
-                                                    mUser.put("customerAddress", "");
+                                                    mUser.put("customerPhoneNumber", "0000000000");
+                                                    mUser.put("customerType", "active");
+                                                    mUser.put("customerAddress", "000 sampleAddress Rd., Portland, OR 97201");
                                                     mUser.put("customerEmail", email);
                                                     mUser.put("customerID", user.getUid());
                                                     mUser.put("timestamp", FieldValue.serverTimestamp());
@@ -133,6 +138,7 @@ public class SignUpActivity extends AppCompatActivity {
                                                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                 @Override
                                                                 public void onSuccess(Void aVoid) {
+                                                                    dialog.dismiss();
                                                                     Toast.makeText(SignUpActivity.this, "You have signed up successfully.",
                                                                             Toast.LENGTH_SHORT).show();
                                                                     Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
@@ -166,5 +172,14 @@ public class SignUpActivity extends AppCompatActivity {
         }
 
 
+    }
+    public void loadingAnimation() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
+        LayoutInflater inflater = getLayoutInflater();
+        builder.setView(inflater.inflate(R.layout.loading, null));
+        builder.setCancelable(false);
+
+        dialog = builder.create();
+        dialog.show();
     }
 }

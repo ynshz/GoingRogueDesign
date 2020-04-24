@@ -7,9 +7,9 @@ import android.widget.Toast;
 
 public class ValidateInput {
     private Context context;
-    private EditText email, password, repeatPassword, username, firstname, lastname;
+    private EditText email, password, repeatPassword, username, firstname, lastname, phoneNumber, oldPassword;
 
-    String emailInput, passwordInput, repeatPasswordInput, usernameInput, firstnameInput, lastnameInput;
+    String emailInput, passwordInput, repeatPasswordInput, oldPasswordInput, usernameInput, firstnameInput, lastnameInput, phoneInput;
 
     ValidateInput(Context myContext, EditText myEmail, EditText myPassword) {
         context = myContext;
@@ -25,6 +25,39 @@ public class ValidateInput {
         username = myUsername;
         firstname = myFirstname;
         lastname = myLastName;
+
+    }
+    //bad practice, assign everything with something to check, use one of the validate function below
+    ValidateInput (Context myContext, EditText somethingToCheck) {
+        context = myContext;
+        email = somethingToCheck;
+        password = somethingToCheck;
+        repeatPassword = somethingToCheck;
+        username = somethingToCheck;
+        firstname = somethingToCheck;
+        lastname = somethingToCheck;
+        phoneNumber = somethingToCheck;
+    }
+
+    ValidateInput(Context myContext, EditText op, EditText p, EditText rp) {
+        context = myContext;
+        oldPassword = op;
+        password = p;
+        repeatPassword = rp;
+    }
+
+    public boolean validatePhoneNumber() {
+        phoneInput = phoneNumber.getText().toString().trim();
+
+        if(phoneInput.isEmpty()) {
+            Toast.makeText(context, "Please enter your Phone Number.", Toast.LENGTH_SHORT).show();
+            return false;
+        }else if(!Patterns.PHONE.matcher(phoneInput).matches()) {
+            Toast.makeText(context, "Invalid Phone Number.", Toast.LENGTH_SHORT).show();
+            return false;
+        }else {
+            return true;
+        }
     }
 
     public boolean validateEmail() {
@@ -70,6 +103,28 @@ public class ValidateInput {
 
     }
 
+    public boolean validateUpdatePassword() {
+        oldPasswordInput = oldPassword.getText().toString().trim();
+        repeatPasswordInput = repeatPassword.getText().toString().trim();
+        passwordInput = password.getText().toString().trim();
+
+        if (oldPasswordInput.isEmpty() || repeatPasswordInput.isEmpty() || passwordInput.isEmpty()) {
+            Toast.makeText(context, "Please fill all fields.", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if(passwordInput.equals(oldPasswordInput)) {
+            Toast.makeText(context, "New password cannot be the same as the old password.", Toast.LENGTH_SHORT).show();
+            return false;
+        }else if(!repeatPasswordInput.equals(passwordInput)) {
+            Toast.makeText(context, "Passwords don't match.", Toast.LENGTH_SHORT).show();
+            return false;
+        }else if(passwordInput.length() < 8) {
+            Toast.makeText(context, "Password too short.", Toast.LENGTH_SHORT).show();
+            return false;
+        }else {
+            return true;
+        }
+
+    }
     public boolean validateUsername() {
         usernameInput = username.getText().toString().trim();
 
