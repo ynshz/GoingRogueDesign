@@ -41,6 +41,8 @@ Then import the project to Android Studio
 ## Built With
 
 * [Dagger](https://dagger.dev/)
+* [Firebase](https://firebase.google.com/)
+
 
 ## Authors
 
