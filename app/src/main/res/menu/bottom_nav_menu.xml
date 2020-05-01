@@ -17,6 +17,11 @@
         android:title="@string/title_projects" />
 
     <item
+        android:id="@+id/navigation_drawings"
+        android:icon="@drawable/ic_image_black_36dp"
+        android:title="@string/title_drawings" />
+
+    <item
         android:id="@+id/navigation_account"
         android:icon="@drawable/ic_account_black_36dp"
         android:title="@string/title_account" />

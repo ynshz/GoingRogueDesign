@@ -65,7 +65,6 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.MyViewHo
             }
         }
 
-
         holder.text4.setText(date.get(position).toString());
         holder.text5.setText(lead.get(position));
         holder.text6.setText(contractor.get(position));
@@ -84,6 +83,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.MyViewHo
             }
         });
 
+        //holder.ivDelete.setVisibility(View.GONE);
         holder.ivDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

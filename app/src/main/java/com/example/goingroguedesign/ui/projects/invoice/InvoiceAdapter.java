@@ -63,6 +63,9 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHo
 
         holder.checkBox.setChecked(paid.get(position));
 
+        if (paid.get(position)) {
+            holder.text3.setText("Paid");
+        }
         holder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +82,7 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHo
                                                 @Override
                                                 public void onSuccess(Void aVoid) {
                                                     Toast.makeText(context, "Invoice: " + name.get(position) + "has been marked as PAID.", Toast.LENGTH_SHORT).show();
-
+                                                    holder.text3.setText("Paid");
                                                 }
                                             })
                                             .addOnFailureListener(new OnFailureListener() {
@@ -112,6 +115,7 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHo
                                                 @Override
                                                 public void onSuccess(Void aVoid) {
                                                     Toast.makeText(context, "Invoice: " + name.get(position) + "has been marked as Unpaid.", Toast.LENGTH_SHORT).show();
+                                                    holder.text3.setText("");
                                                 }
                                             })
                                             .addOnFailureListener(new OnFailureListener() {
@@ -159,7 +163,7 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHo
 
     public class MyViewHolder  extends RecyclerView.ViewHolder{
 
-        TextView text1, text2;
+        TextView text1, text2, text3;
         ImageView image;
         CheckBox checkBox;
 
@@ -167,6 +171,7 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHo
             super(itemView);
             text1 = itemView.findViewById(R.id.tvName);
             text2 = itemView.findViewById(R.id.tvDate);
+            text3 = itemView.findViewById(R.id.tvPaid);
             image = itemView.findViewById(R.id.ivLink);
             checkBox = itemView.findViewById(R.id.checkBox);
         }

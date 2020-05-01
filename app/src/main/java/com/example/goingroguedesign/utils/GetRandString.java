@@ -76,4 +76,11 @@ public class GetRandString {
 
         return s1;
     }
+
+    public String getContent () {
+        String[] a1 = context.getResources().getStringArray(R.array.random_content);
+        String s1 = a1[new Random().nextInt(a1.length)];
+
+        return s1;
+    }
 }

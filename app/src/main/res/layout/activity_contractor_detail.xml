@@ -7,10 +7,27 @@
     android:background="@color/light_grey"
     tools:context=".ui.account.AddContractorActivity">
 
+    <TextView
+        android:id="@+id/tvDelete"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="@android:color/holo_red_light"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="Delete"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <ScrollView
+        android:id="@+id/scrollView4"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tvDelete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView2">
@@ -23,22 +40,6 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/tvDelete"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
-                    android:background="@color/red"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:text="Delete"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/etAddress" />
 
                 <Spinner
                     android:id="@+id/spinType"
@@ -175,10 +176,12 @@
                     android:id="@+id/etAddress"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="32dp"
                     android:background="@color/white"
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:padding="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView60" />
@@ -197,8 +200,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="16dp">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/textView"
@@ -207,7 +209,6 @@
                 android:text="Update Contractor"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/tvSubmit"
                 app:layout_constraintStart_toEndOf="@+id/tvCancelAdd"
@@ -217,6 +218,7 @@
                 android:id="@+id/tvCancelAdd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="16dp"
                 android:text="Cancel"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -228,6 +230,7 @@
                 android:id="@+id/tvSubmit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="16dp"
                 android:text="Confirm"
                 android:textColor="@color/black"
                 android:textSize="18sp"

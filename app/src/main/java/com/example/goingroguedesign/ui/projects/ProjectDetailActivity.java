@@ -15,6 +15,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,13 +23,15 @@ public class ProjectDetailActivity extends AppCompatActivity {
 
     String id, title, address, status, date, lead;
     TextView tvTitle, tvAddress, tvStatus, tvDate, tvLead;
-    ImageView ivDocument, ivCalendar, ivInvoice, ivTask, ivBack, ivNote, ivMap, ivMore, ivLess;
+    ImageView ivDocument, ivCalendar, ivInvoice, ivTask, ivBack, ivNote, ivMap, ivMore, ivLess, ivRightMore, ivLeftMore;
     CardView cvTitle, cvDetail;
     boolean showDetail = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_detail);
+
+
         ((AppCompatActivity) ProjectDetailActivity.this).getSupportActionBar().hide();
 
 
@@ -51,6 +54,8 @@ public class ProjectDetailActivity extends AppCompatActivity {
         cvTitle = findViewById(R.id.cvTitle);
         ivMore = findViewById(R.id.ivMore);
         ivLess = findViewById(R.id.ivLess);
+        ivRightMore = findViewById(R.id.ivMorePage);
+        ivLeftMore = findViewById(R.id.ivLeftMore);
         getData();
         setData();
         //Toast.makeText(this, "Retrieving data: "+id, Toast.LENGTH_SHORT).show();
@@ -73,11 +78,68 @@ public class ProjectDetailActivity extends AppCompatActivity {
             }
         });
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager(), id);
-        ViewPager viewPager = findViewById(R.id.view_pager);
+        final ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
         final TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
 
+        ivLeftMore.setVisibility(View.GONE);
+        ivRightMore.setVisibility(View.GONE);
+
+        /*if (viewPager.getCurrentItem() < 3) {
+            ivLeftMore.setVisibility(View.GONE);
+        } else {
+            ivLeftMore.setVisibility(View.VISIBLE);
+        }
+        if (viewPager.getCurrentItem() > 2) {
+            ivRightMore.setVisibility(View.GONE);
+        } else {
+            ivRightMore.setVisibility(View.VISIBLE);
+        }
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                if (viewPager.getCurrentItem() < 3) {
+                    ivLeftMore.setVisibility(View.GONE);
+                } else {
+                    ivLeftMore.setVisibility(View.VISIBLE);
+                }
+                if (viewPager.getCurrentItem() > 2) {
+                    ivRightMore.setVisibility(View.GONE);
+                } else {
+                    ivRightMore.setVisibility(View.VISIBLE);
+                }
+            }
+        });*/
+
+        ivLeftMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int currentItem = viewPager.getCurrentItem();
+                if (currentItem > 0) {
+                    viewPager.setCurrentItem(currentItem-1);
+                }
+            }
+        });
+        ivRightMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int currentItem = viewPager.getCurrentItem();
+                if (currentItem < 5) {
+                    viewPager.setCurrentItem(currentItem+1);
+                }
+
+            }
+        });
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

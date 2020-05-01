@@ -51,7 +51,7 @@ public class InvoiceFragment extends Fragment {
             loadInvoice(id);
 
             FloatingActionButton fab = root.findViewById(R.id.fab);
-
+            //fab.setVisibility(View.GONE);
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -61,9 +61,14 @@ public class InvoiceFragment extends Fragment {
                     dummy.put("invoiceName", g.getLastName()+g.getLastName());
                     dummy.put("invoiceDueDate", FieldValue.serverTimestamp());
                     dummy.put("invoicePaid", false);
-                    dummy.put("invoicePaidAt", FieldValue.serverTimestamp());
-                    dummy.put("invoiceImageUrl", "");
+                    //dummy.put("invoicePaidAt", FieldValue.serverTimestamp());
+                    dummy.put("invoiceLink", "");
                     dummy.put("projectID", id);
+                    dummy.put("customerEmail", mUser.getEmail());
+                    dummy.put("userID", mUser.getUid());
+                    dummy.put("invoiceType", "unpaid");
+                    dummy.put("invoicePaidDate", FieldValue.serverTimestamp());
+                    dummy.put("invoiceID", "invoiceID");
 
                     db.collection("Invoice").add(dummy)
                             .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -97,7 +102,7 @@ public class InvoiceFragment extends Fragment {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 name.add(document.getString("invoiceName"));
                                 date.add(document.getDate("invoiceDueDate"));
-                                url.add(document.getString("invoiceImageUrl"));
+                                url.add(document.getString("invoiceLink"));
                                 id.add(document.getId());
                                 paid.add(document.getBoolean("invoicePaid"));
 

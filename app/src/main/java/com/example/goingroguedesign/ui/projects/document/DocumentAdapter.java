@@ -63,6 +63,9 @@ public class DocumentAdapter extends RecyclerView.Adapter<DocumentAdapter.MyView
 
         holder.checkBox.setChecked(completed.get(position));
 
+        if (completed.get(position)) {
+            holder.text3.setText("Completed");
+        }
         holder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,6 +81,7 @@ public class DocumentAdapter extends RecyclerView.Adapter<DocumentAdapter.MyView
                                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                 @Override
                                                 public void onSuccess(Void aVoid) {
+                                                    holder.text3.setText("Completed");
                                                     Toast.makeText(context, "Document: " + name.get(position) + "has been marked as COMPLETED.", Toast.LENGTH_SHORT).show();
 
                                                 }
@@ -111,6 +115,7 @@ public class DocumentAdapter extends RecyclerView.Adapter<DocumentAdapter.MyView
                                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                 @Override
                                                 public void onSuccess(Void aVoid) {
+                                                    holder.text3.setText("");
                                                     Toast.makeText(context, "Document: " + name.get(position) + "has been marked as inCompleted.", Toast.LENGTH_SHORT).show();
                                                 }
                                             })
@@ -164,7 +169,7 @@ public class DocumentAdapter extends RecyclerView.Adapter<DocumentAdapter.MyView
 
     public class MyViewHolder  extends RecyclerView.ViewHolder{
 
-        TextView text1, text2;
+        TextView text1, text2, text3;
         ImageView image;
         CheckBox checkBox;
 
@@ -172,6 +177,7 @@ public class DocumentAdapter extends RecyclerView.Adapter<DocumentAdapter.MyView
             super(itemView);
             text1 = itemView.findViewById(R.id.tvName);
             text2 = itemView.findViewById(R.id.tvDate);
+            text3 = itemView.findViewById(R.id.tvComplete);
             image = itemView.findViewById(R.id.ivLink);
             checkBox = itemView.findViewById(R.id.checkBox);
         }

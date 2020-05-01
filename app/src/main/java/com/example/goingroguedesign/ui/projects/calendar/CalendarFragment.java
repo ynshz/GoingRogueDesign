@@ -5,12 +5,16 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.goingroguedesign.R;
+import com.shrikanthravi.collapsiblecalendarview.data.Day;
+import com.shrikanthravi.collapsiblecalendarview.widget.CollapsibleCalendar;
+
 import java.io.IOException;
 
 import okhttp3.OkHttpClient;
@@ -22,11 +26,13 @@ public class CalendarFragment extends Fragment {
     private static final OkHttpClient mHTTPClient = new OkHttpClient();
     TextView tvCalendar;
     String url = "https://cs493-a3-yuansh.wl.r.appspot.com/slips";
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_calendar, container, false);
 
-        tvCalendar = root.findViewById(R.id.tvCalendar);
+        //tvCalendar = root.findViewById(R.id.tvCalendar);
         String results = null;
 
         new apiGetTask().execute(url);
@@ -36,6 +42,43 @@ public class CalendarFragment extends Fragment {
 
 
 
+        final CollapsibleCalendar collapsibleCalendar = root.findViewById(R.id.calendarView);
+        collapsibleCalendar.setCalendarListener(new CollapsibleCalendar.CalendarListener() {
+            @Override
+            public void onDayChanged() {
+
+            }
+
+            @Override
+            public void onClickListener() {
+
+            }
+
+            @Override
+            public void onDaySelect() {
+
+            }
+
+            @Override
+            public void onItemClick(View view) {
+
+            }
+
+            @Override
+            public void onDataUpdate() {
+
+            }
+
+            @Override
+            public void onMonthChange() {
+
+            }
+
+            @Override
+            public void onWeekChange(int i) {
+
+            }
+        });
         // Inflate the layout for this fragment
         return root;
 
@@ -68,7 +111,7 @@ public class CalendarFragment extends Fragment {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             if (s != null) {
-                tvCalendar.setText(s);
+                //tvCalendar.setText(s);
             }
         }
 

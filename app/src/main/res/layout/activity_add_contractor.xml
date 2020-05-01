@@ -191,7 +191,6 @@
                 android:text="Add a Contractor"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/tvSubmit"
                 app:layout_constraintStart_toEndOf="@+id/tvCancelAdd"

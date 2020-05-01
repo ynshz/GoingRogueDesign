@@ -34,19 +34,19 @@ import java.util.Date;
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> {
 
     ArrayList<String> id, name, description;
-    ArrayList<Date> date;
+    ArrayList<Date> date, due;
     ArrayList<Boolean> resolved;
     Context context;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    public TaskAdapter(Context ct,  ArrayList<String> s1,  ArrayList<String> s2, ArrayList<String> s3, ArrayList<Date> s4, ArrayList<Boolean> s5){
+    public TaskAdapter(Context ct,  ArrayList<String> s1,  ArrayList<String> s2, ArrayList<String> s3, ArrayList<Date> s4, ArrayList<Boolean> s5, ArrayList<Date> s6){
         context = ct;
         id = s1;
         name = s2;
         description = s3;
         date = s4;
         resolved = s5;
-
+        due = s6;
     }
     @NonNull
     @Override
@@ -59,7 +59,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull final TaskAdapter.MyViewHolder holder, final int position) {
         holder.text1.setText(name.get(position));
-        holder.text2.setText(date.get(position).toString());
+        holder.text2.setText(due.get(position).toString());
         holder.text3.setText(description.get(position));
         if (resolved.get(position)) {
             holder.checkBox.setChecked(true);
@@ -152,6 +152,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
                 intent.putExtra("name", name.get(position));
                 intent.putExtra("id", id.get(position));
                 intent.putExtra("description", description.get(position));
+                intent.putExtra("due",due.get(position).toString());
                 context.startActivity(intent);
 
                 /*

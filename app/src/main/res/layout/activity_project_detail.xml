@@ -12,6 +12,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/ivLeftMore"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:background="@color/colorPrimary"
+            android:elevation="1dp"
+            app:layout_constraintBottom_toTopOf="@+id/view_pager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cvDetail"
+            app:srcCompat="@drawable/ic_keyboard_arrow_left_black_24dp" />
+
+        <ImageView
+            android:id="@+id/ivMorePage"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:background="@color/colorPrimary"
+            android:elevation="1dp"
+            android:tint="@android:color/black"
+            app:layout_constraintBottom_toTopOf="@+id/view_pager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cvDetail"
+            app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp" />
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cvDetail"
             android:layout_width="match_parent"
@@ -184,7 +207,8 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:padding="8dp">
 
                         <TextView
                             android:id="@+id/tvName"
@@ -230,16 +254,13 @@
 
                 <ImageView
                     android:id="@+id/ivBack"
-                    android:layout_width="36dp"
-                    android:layout_height="24dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_keyboard_arrow_left_black_72dp" />
+                    app:srcCompat="@drawable/ic_keyboard_arrow_left_black_24dp" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -261,11 +282,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
-                android:paddingBottom="8dp"
+                android:paddingBottom="5dp"
+                app:tabGravity="fill"
                 app:tabIndicatorColor="@color/white"
+                app:tabIndicatorFullWidth="true"
                 app:tabIndicatorGravity="bottom"
-                app:tabTextAppearance="@style/TextAppearance.AppCompat.Display3"
+                app:tabMinWidth="10dp"
+                app:tabMode="scrollable"
+                app:tabPadding="0dp"
+                app:tabSelectedTextColor="@android:color/white"
+                app:tabTextAppearance="@style/MyCustomTextAppearance"
                 app:tabTextColor="@android:color/black" />
+
         </com.google.android.material.appbar.AppBarLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

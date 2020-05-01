@@ -181,8 +181,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="16dp">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/textView"
@@ -191,7 +190,6 @@
                 android:text="Add a New Note"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/tvSubmit"
                 app:layout_constraintStart_toEndOf="@+id/tvCancelAdd"
@@ -201,6 +199,7 @@
                 android:id="@+id/tvCancelAdd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="16dp"
                 android:text="Cancel"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -212,6 +211,7 @@
                 android:id="@+id/tvSubmit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="16dp"
                 android:text="Submit"
                 android:textColor="@color/black"
                 android:textSize="18sp"

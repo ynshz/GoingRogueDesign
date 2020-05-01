@@ -52,7 +52,7 @@ public class DocumentFragment extends Fragment {
 
             loadDocument(id);
             FloatingActionButton fab = root.findViewById(R.id.fab);
-
+            //fab.setVisibility(View.GONE);
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -69,6 +69,7 @@ public class DocumentFragment extends Fragment {
                     dummyDocument.put("documentID","thisShouldBeDocumentID");
                     dummyDocument.put("documentType","doc");
                     dummyDocument.put("userID",mUser.getUid());
+
                     db.collection("Document").add(dummyDocument)
                             .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
@@ -102,7 +103,7 @@ public class DocumentFragment extends Fragment {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 name.add(document.getString("documentName"));
                                 date.add(document.getDate("documentDueDate"));
-                                url.add(document.getString("documentUrl"));
+                                url.add(document.getString("documentLink"));
                                 id.add(document.getId());
                                 complete.add(document.getBoolean("documentCompleted"));
 

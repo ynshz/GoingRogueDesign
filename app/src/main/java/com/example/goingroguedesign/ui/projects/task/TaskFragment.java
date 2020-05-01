@@ -63,7 +63,7 @@ public class TaskFragment extends Fragment {
             loadTask(id);
 
             FloatingActionButton fab = root.findViewById(R.id.fab);
-
+            //fab.setVisibility(View.GONE);
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -71,11 +71,11 @@ public class TaskFragment extends Fragment {
 
                     Map<String, Object> dummy = new HashMap<>();
 
-                    dummy.put("taskName", g.getLastName()+g.getLastName());
-                    dummy.put("taskDescription", g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName());
+                    dummy.put("taskName", g.getLastName()+" "+ g.getHotel());
+                    dummy.put("taskDescription", g.getContent());
                     dummy.put("taskCreatedDate", FieldValue.serverTimestamp());
                     dummy.put("taskResolved", false);
-                    dummy.put("taskResolvedAt", FieldValue.serverTimestamp());
+                    dummy.put("taskResolvedDate", FieldValue.serverTimestamp());
                     dummy.put("projectID", id);
                     dummy.put("taskDueDate", FieldValue.serverTimestamp());
 
@@ -116,6 +116,8 @@ public class TaskFragment extends Fragment {
         final ArrayList<Date> date = new ArrayList<java.util.Date>();
         final ArrayList<String> id = new ArrayList<String>();
         final ArrayList<Boolean> resolved = new ArrayList<Boolean>();
+        final ArrayList<Date> dueDate = new ArrayList<Date>();
+
         db.collection("Task").whereEqualTo("projectID", s).orderBy("taskCreatedDate", Direction.DESCENDING)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -128,12 +130,13 @@ public class TaskFragment extends Fragment {
                                 description.add(document.getString("taskDescription"));
                                 id.add(document.getId());
                                 resolved.add(document.getBoolean("taskResolved"));
+                                dueDate.add(document.getDate("taskDueDate"));
                             }
                         } else {
                             Toast.makeText(getActivity(), "Failed to read task", Toast.LENGTH_SHORT).show();
 
                         }
-                        TaskAdapter taskAdapter = new TaskAdapter(getActivity(), id, name, description, date, resolved);
+                        TaskAdapter taskAdapter = new TaskAdapter(getActivity(), id, name, description, date, resolved, dueDate);
                         recyclerView.setAdapter(taskAdapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                     }

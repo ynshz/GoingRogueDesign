@@ -63,15 +63,15 @@ public class NoteFragment extends Fragment {
             loadNote(id);
 
             FloatingActionButton fab = root.findViewById(R.id.fab);
-
+            //fab.setVisibility(View.GONE);
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     GetRandString g = new GetRandString(getActivity());
 
                     Map<String, Object> dummy = new HashMap<>();
-                    dummy.put("noteTitle", g.getLastName()+g.getLastName());
-                    dummy.put("noteContent", g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName()+g.getLastName());
+                    dummy.put("noteTitle", g.getLastName() + " " + g.getLastName());
+                    dummy.put("noteContent", g.getContent());
                     dummy.put("noteCreatedAt", FieldValue.serverTimestamp());
                     dummy.put("noteModifiedAt", FieldValue.serverTimestamp());
                     dummy.put("notePictureUrl", "null");

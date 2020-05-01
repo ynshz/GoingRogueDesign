@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import com.example.goingroguedesign.R;
 import com.example.goingroguedesign.ui.projects.calendar.CalendarFragment;
 import com.example.goingroguedesign.ui.projects.document.DocumentFragment;
+import com.example.goingroguedesign.ui.projects.drawing.DrawingFragment;
 import com.example.goingroguedesign.ui.projects.invoice.InvoiceFragment;
 import com.example.goingroguedesign.ui.projects.note.NoteFragment;
 import com.example.goingroguedesign.ui.projects.task.TaskFragment;
@@ -22,7 +23,7 @@ import com.example.goingroguedesign.ui.projects.task.TaskFragment;
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_3, R.string.tab_text_4, R.string.tab_text_5};
+    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_0, R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_3, R.string.tab_text_4, R.string.tab_text_5};
     private final Context mContext;
     String id;
 
@@ -39,19 +40,22 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         Fragment fragment = null;
         switch (position) {
             case 1:
-                fragment = new CalendarFragment();
+                fragment = new DocumentFragment();
                 break;
             case 2:
-                fragment = new InvoiceFragment();
+                fragment = new CalendarFragment();
                 break;
             case 3:
-                fragment = new TaskFragment();
+                fragment = new InvoiceFragment();
                 break;
             case 4:
+                fragment = new TaskFragment();
+                break;
+            case 5:
                 fragment = new NoteFragment();
                 break;
             default:
-                fragment = new DocumentFragment();
+                fragment = new DrawingFragment();
                 break;
         }
         Bundle bundle = new Bundle();
@@ -68,6 +72,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 5;
+        return 6;
     }
 }
