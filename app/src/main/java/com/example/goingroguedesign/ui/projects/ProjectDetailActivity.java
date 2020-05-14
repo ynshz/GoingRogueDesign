@@ -149,19 +149,19 @@ public class ProjectDetailActivity extends AppCompatActivity {
         ivMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ProjectDetailActivity.this, MapsActivity.class);
-                intent.putExtra("lat", 44.564568f);
-                intent.putExtra("lng", -123.262047f);
-                intent.putExtra("title", title);
-                startActivity(intent);
-                /*
+//                Intent intent = new Intent(ProjectDetailActivity.this, MapsActivity.class);
+//                intent.putExtra("lat", 44.564568f);
+//                intent.putExtra("lng", -123.262047f);
+//                intent.putExtra("title", title);
+//                startActivity(intent);
+
                 Uri locationUri = Uri.parse("http://maps.google.co.in/maps?q=" + address);
                 Intent I = new Intent(Intent.ACTION_VIEW, locationUri);
                 if (I.resolveActivity(getPackageManager()) != null) {
                     startActivity(I);
                 }
 
-                 */
+
             }
         });
         /*

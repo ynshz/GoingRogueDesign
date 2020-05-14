@@ -24,12 +24,6 @@
         tools:layout="@layout/fragment_projects" />
 
     <fragment
-        android:id="@+id/navigation_drawings"
-        android:name="com.example.goingroguedesign.ui.drawings.DrawingsFragment"
-        android:label="@string/title_drawings"
-        tools:layout="@layout/drawings_fragment" />
-
-    <fragment
         android:id="@+id/navigation_account"
         android:name="com.example.goingroguedesign.ui.account.AccountFragment"
         android:label="@string/title_account"

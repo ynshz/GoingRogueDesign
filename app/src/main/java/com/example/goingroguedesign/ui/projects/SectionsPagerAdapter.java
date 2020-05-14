@@ -23,7 +23,7 @@ import com.example.goingroguedesign.ui.projects.task.TaskFragment;
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_0, R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_3, R.string.tab_text_4, R.string.tab_text_5};
+    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_3, R.string.tab_text_4, R.string.tab_text_5};
     private final Context mContext;
     String id;
 
@@ -40,22 +40,19 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         Fragment fragment = null;
         switch (position) {
             case 1:
-                fragment = new DocumentFragment();
-                break;
-            case 2:
                 fragment = new CalendarFragment();
                 break;
-            case 3:
+            case 2:
                 fragment = new InvoiceFragment();
                 break;
-            case 4:
+            case 3:
                 fragment = new TaskFragment();
                 break;
-            case 5:
+            case 4:
                 fragment = new NoteFragment();
                 break;
             default:
-                fragment = new DrawingFragment();
+                fragment = new DocumentFragment();
                 break;
         }
         Bundle bundle = new Bundle();
@@ -72,6 +69,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 6;
+        return 5;
     }
 }

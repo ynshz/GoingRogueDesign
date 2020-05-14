@@ -7,6 +7,7 @@
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cvInvoice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -76,7 +77,9 @@
                 android:id="@+id/tvPaid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Paid"
                 android:textColor="@android:color/holo_green_light"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/checkBox"
                 app:layout_constraintStart_toEndOf="@+id/checkBox"
                 app:layout_constraintTop_toTopOf="@+id/checkBox" />

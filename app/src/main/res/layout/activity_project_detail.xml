@@ -287,8 +287,6 @@
                 app:tabIndicatorColor="@color/white"
                 app:tabIndicatorFullWidth="true"
                 app:tabIndicatorGravity="bottom"
-                app:tabMinWidth="10dp"
-                app:tabMode="scrollable"
                 app:tabPadding="0dp"
                 app:tabSelectedTextColor="@android:color/white"
                 app:tabTextAppearance="@style/MyCustomTextAppearance"

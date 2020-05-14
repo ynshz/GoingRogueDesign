@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.recyclerview.widget.RecyclerView;
@@ -59,11 +60,23 @@ public class DocumentAdapter extends RecyclerView.Adapter<DocumentAdapter.MyView
     @Override
     public void onBindViewHolder(@NonNull final DocumentAdapter.MyViewHolder holder, final int position) {
         holder.text1.setText(name.get(position));
-        holder.text2.setText(date.get(position).toString());
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "Document ID: " + id.get(position), Toast.LENGTH_SHORT).show();
 
-        holder.checkBox.setChecked(completed.get(position));
+            }
+        });
+        if (date.get(position) != null) {
+            holder.text2.setText(date.get(position).toString());
+        }
 
-        if (completed.get(position)) {
+        if (completed.get(position) != null) {
+            holder.checkBox.setChecked(completed.get(position));
+
+        }
+
+        if (completed.get(position) != null) {
             holder.text3.setText("Completed");
         }
         holder.checkBox.setOnClickListener(new View.OnClickListener() {
@@ -172,6 +185,7 @@ public class DocumentAdapter extends RecyclerView.Adapter<DocumentAdapter.MyView
         TextView text1, text2, text3;
         ImageView image;
         CheckBox checkBox;
+        CardView cardView;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -180,6 +194,7 @@ public class DocumentAdapter extends RecyclerView.Adapter<DocumentAdapter.MyView
             text3 = itemView.findViewById(R.id.tvComplete);
             image = itemView.findViewById(R.id.ivLink);
             checkBox = itemView.findViewById(R.id.checkBox);
+            cardView = itemView.findViewById(R.id.cvDocument);
         }
     }
 

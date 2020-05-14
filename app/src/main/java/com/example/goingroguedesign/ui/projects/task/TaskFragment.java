@@ -63,7 +63,7 @@ public class TaskFragment extends Fragment {
             loadTask(id);
 
             FloatingActionButton fab = root.findViewById(R.id.fab);
-            //fab.setVisibility(View.GONE);
+            fab.setVisibility(View.GONE);
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

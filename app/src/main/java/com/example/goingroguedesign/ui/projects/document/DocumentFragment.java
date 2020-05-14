@@ -52,7 +52,7 @@ public class DocumentFragment extends Fragment {
 
             loadDocument(id);
             FloatingActionButton fab = root.findViewById(R.id.fab);
-            //fab.setVisibility(View.GONE);
+            fab.setVisibility(View.GONE);
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -102,7 +102,7 @@ public class DocumentFragment extends Fragment {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 name.add(document.getString("documentName"));
-                                date.add(document.getDate("documentDueDate"));
+                                date.add(document.getDate("documentCreatedTime"));
                                 url.add(document.getString("documentLink"));
                                 id.add(document.getId());
                                 complete.add(document.getBoolean("documentCompleted"));

@@ -61,7 +61,7 @@ public class ProjectsFragment extends Fragment {
         recyclerView = root.findViewById(R.id.rvProject);
         FloatingActionButton fab = root.findViewById(R.id.fab);
         if(mUser != null){
-            //fab.setVisibility(View.GONE);
+            fab.setVisibility(View.GONE);
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

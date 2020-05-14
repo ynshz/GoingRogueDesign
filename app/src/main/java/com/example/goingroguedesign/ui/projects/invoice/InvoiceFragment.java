@@ -51,7 +51,7 @@ public class InvoiceFragment extends Fragment {
             loadInvoice(id);
 
             FloatingActionButton fab = root.findViewById(R.id.fab);
-            //fab.setVisibility(View.GONE);
+            fab.setVisibility(View.GONE);
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

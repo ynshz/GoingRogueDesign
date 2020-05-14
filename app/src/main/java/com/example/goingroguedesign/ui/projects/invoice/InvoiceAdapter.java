@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.recyclerview.widget.RecyclerView;
@@ -60,10 +61,17 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHo
     public void onBindViewHolder(@NonNull final InvoiceAdapter.MyViewHolder holder, final int position) {
         holder.text1.setText(name.get(position));
         holder.text2.setText(date.get(position).toString());
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "Invoice ID: " + id.get(position), Toast.LENGTH_SHORT).show();
 
-        holder.checkBox.setChecked(paid.get(position));
+            }
+        });
 
-        if (paid.get(position)) {
+
+        if (paid.get(position) != null) {
+            holder.checkBox.setChecked(paid.get(position));
             holder.text3.setText("Paid");
         }
         holder.checkBox.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +90,8 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHo
                                                 @Override
                                                 public void onSuccess(Void aVoid) {
                                                     Toast.makeText(context, "Invoice: " + name.get(position) + "has been marked as PAID.", Toast.LENGTH_SHORT).show();
-                                                    holder.text3.setText("Paid");
+                                                    holder.text3.setVisibility(View.VISIBLE);
+
                                                 }
                                             })
                                             .addOnFailureListener(new OnFailureListener() {
@@ -115,7 +124,7 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHo
                                                 @Override
                                                 public void onSuccess(Void aVoid) {
                                                     Toast.makeText(context, "Invoice: " + name.get(position) + "has been marked as Unpaid.", Toast.LENGTH_SHORT).show();
-                                                    holder.text3.setText("");
+                                                    holder.text3.setVisibility(View.GONE);
                                                 }
                                             })
                                             .addOnFailureListener(new OnFailureListener() {
@@ -166,7 +175,7 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHo
         TextView text1, text2, text3;
         ImageView image;
         CheckBox checkBox;
-
+        CardView cardView;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             text1 = itemView.findViewById(R.id.tvName);
@@ -174,6 +183,7 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHo
             text3 = itemView.findViewById(R.id.tvPaid);
             image = itemView.findViewById(R.id.ivLink);
             checkBox = itemView.findViewById(R.id.checkBox);
+            cardView = itemView.findViewById(R.id.cvInvoice);
         }
     }
 
