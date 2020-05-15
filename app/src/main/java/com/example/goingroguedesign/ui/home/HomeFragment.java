@@ -38,7 +38,7 @@ public class HomeFragment extends Fragment {
     private static String WEBSITE_URL = "https://www.goingroguedesignllc.com/";
     private static String FACEBOOK_URL = "https://www.facebook.com/goingroguedesign";
     private static String FACEBOOK_PAGE_ID = "1491233820996177";
-    private static String TWITTER_URL = "https://twitter.com/SOLELINKS?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor";
+    private static String TWITTER_URL = "https://twitter.com/design_going";
     private static String INSTAGRAM_URL = "https://www.instagram.com/goingroguedesign/";
     private FirebaseAuth mAuth;
     FirebaseUser mUser;
@@ -182,7 +182,7 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Intent twitterIntent;
                 try {
-                    twitterIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?screen_name=solelinks"));
+                    twitterIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?screen_name=design_going"));
                     startActivity(twitterIntent);
                 } catch (ActivityNotFoundException e) {
                     twitterIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(TWITTER_URL));
